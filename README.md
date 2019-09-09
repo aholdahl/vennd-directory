@@ -113,3 +113,10 @@ This code is also heavily commented. We recommend reading through the comments, 
 ## Update Documentation
 
 Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+
+
+## My Documents
+https://docs.google.com/document/d/1LMjtjxtvSrktbnCibwwzX2Wo5TOUu2mcIBfD3oMk_OA/edit#
+https://app.moqups.com/GbALlRzhNp/edit/page/ad64222d5
+https://app.dbdesigner.net/designer/schema/265962
+https://trello.com/b/QOOYdUx3/vennd-directory
