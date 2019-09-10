@@ -14,6 +14,7 @@ class BusinessForm extends Component {
         selectedCategoryId: 0
     }
 
+    //this may not be necessary during deployment, but was helpful during development because the dropdown would clear at every change.
     componentDidMount() {
         this.getCategories();
     }

@@ -11,6 +11,24 @@ import BlockIcon from '@material-ui/icons/Block';
 
 class DetailCard extends Component {
 
+    addFavorite = ()=>{
+        this.props.dispatch({
+            type: 'ADD_FAVORITE',
+            payload: {
+                business_id: this.props.store.detailReducer.id
+            }
+        })
+    }
+
+    removeFavorite = () => {
+        this.props.dispatch({
+            type: 'REMOVE_FAVORITE',
+            payload: {
+                business_id: this.props.store.detailReducer.id
+            }
+        })
+    }
+
     render() {
 
         return (
@@ -46,7 +64,13 @@ class DetailCard extends Component {
                     <Link href={this.props.store.detailReducer.google_places_url}>Open in Google Maps</Link>
                 </CardContent>
                 <CardActions>
-                    {/* <StarIcon/> conditional rendering goes here */}
+                    <IconButton>
+                        {/* <StarIcon/> conditional rendering goes here */}
+                        <StarBorderIcon onClick={this.addFavorite} />
+                    </IconButton>
+                    <IconButton>
+                        <StarIcon onClick={this.removeFavorite} />
+                    </IconButton>
                     <IconButton>
                         {this.props.store.detailReducer.verified && <CheckCircleIcon />}
                     </IconButton>
