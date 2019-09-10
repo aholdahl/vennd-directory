@@ -1,39 +1,7 @@
 import axios from 'axios';
 import { takeEvery, put } from 'redux-saga/effects';
 
-// function* updateTag(action) {
-//     try {
-//         yield axios.post(`/api/detail`, action.payload)
-//         yield put({
-//             type: 'FETCH_DIRECTORY'
-//         })
-//     } catch (error) {
-//         console.log(error)
-//     }
-// }
-
-// function* addFavorite(action){
-//     try{
-//         yield axios.post(`/api/detail/${action.payload}`)
-//         yield put ({
-//             type: 'FETCH_DIRECTORY'
-//         })
-//     } catch (error){
-//         console.log(error)
-//     }
-// }
-
-// function* removeFavorite(action){
-//     try{
-//         yield axios.delete(`/api/detail/${action.payload}`)
-//         yield put ({
-//             type: 'FETCH_DIRECTORY'
-//         })
-//     } catch(error){
-//         console.log(error)
-//     }
-// }
-
+//gets details of clicked business from the database, then sends them to detailReducer
 function* fetchCurrent(action){
     try {
         let response = yield axios.get(`/api/detail/${action.payload.id}`)
@@ -47,6 +15,7 @@ function* fetchCurrent(action){
     }
 }
 
+//sends details of new business from form to database (no GET route since page will change and automatically update)
 function* addBusiness(action){
     try {
         yield axios.post(`api/detail`, action.payload)
@@ -56,9 +25,6 @@ function* addBusiness(action){
 }
 
 function* detailSaga() {
-    // yield takeEvery('UPDATE_TAG', updateTag);
-    // yield takeEvery('ADD_FAVORITE', addFavorite);
-    // yield takeEvery('REMOVE_FAVORITE', removeFavorite);
     yield takeEvery('FETCH_CURRENT', fetchCurrent);
     yield takeEvery('ADD_BUSINESS', addBusiness);
 }

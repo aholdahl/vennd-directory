@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Select, MenuItem, OutlinedInput, Chip, InputBase, Button, IconButton } from '@material-ui/core';
+import { Select, MenuItem, OutlinedInput, Chip, Button, IconButton } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import WatchLaterIcon from '@material-ui/icons/WatchLater';
@@ -22,22 +22,33 @@ class SearchBar extends Component {
 
     componentDidMount() {
         this.getCategories();
+        // this.getFavorites();
         this.handleSubmit();
-        this.getFavorites();
     }
 
+    //saves the list of available categories via categorySaga to a reducer for use in the search parameters dropdown menu
     getCategories = () => {
         this.props.dispatch({
             type: 'FETCH_CATEGORIES'
         })
     }
 
-    getFavorites = () => {
+    // //saves the list of available favorites to a reducer so the Star icon can be rendered as applicable
+    // getFavorites = () => {
+    //     this.props.dispatch({
+    //         type: 'FETCH_FAVORITES'
+    //     })
+    // }
+
+    //retrieves the search results via searchSaga from the database based on the specified parameters
+    handleSubmit = () => {
         this.props.dispatch({
-            type: 'FETCH_FAVORITES'
+            type: 'FETCH_SEARCH',
+            payload: { searchInput: this.state.searchInput }
         })
     }
 
+    //saves the search text input to the local state until submit
     handleInput = (event) => {
         this.setState({
             ...this.state,
@@ -45,13 +56,7 @@ class SearchBar extends Component {
         })
     }
 
-    handleSubmit = () => {
-        this.props.dispatch({
-            type: 'FETCH_SEARCH',
-            payload: { searchInput: this.state.searchInput }           
-        })
-    }
-
+    //saves the search category to the local state until submit
     handleDropdown = (event) => {
         this.setState({
             ...this.state,
@@ -59,6 +64,7 @@ class SearchBar extends Component {
         })
     }
 
+    //saves the chip tags to the local state until submit
     toggleBadge = (property, current) => {
         this.setState({
             ...this.state,
@@ -66,23 +72,26 @@ class SearchBar extends Component {
         })
     }
 
+    //when the Add New icon is clicked, takes user to the BusinessForm component
     handleNew = () => {
         this.props.history.push('/new');//history is undefined?
     }
 
-render(){
-    let renderSearch = this.props.store.searchReducer.map((business)=>{
-        return (
-            <SearchList business={business}/>
-        )
-    })
+    render() {
+
+        // maps over the search results and renders them to the DOM using the SearchList component
+        let renderSearch = this.props.store.searchReducer.map((business) => {
+            return (
+                <SearchList business={business} />
+            )
+        })
 
         return (
             <div>
                 <SearchIcon color="primary" />
-                <input onChange={this.handleInput} /> {/* InputBase */}
+                <OutlinedInput onChange={this.handleInput} />
                 <Button color="primary" variant="contained" onClick={this.handleSubmit}>Search</Button>
-                
+
                 <Select
                     value={this.state.selectedCategoryId}
                     onChange={this.handleDropdown}
@@ -107,6 +116,7 @@ render(){
                 {this.state.accessible ?
                     <Chip color="primary" label="Accessible" deleteIcon={<DoneIcon />} onClick={() => { this.toggleBadge('accessible', true) }} />
                     : < Chip color="secondary" label="Accessible" variant="outlined" onClick={() => { this.toggleBadge('accessible', false) }} />}
+
                 <IconButton>
                     {this.state.favorite ? <StarIcon color="primary" onClick={() => { this.toggleBadge('favorite', true) }} />
                         : <StarBorderIcon color="secondary" onClick={() => { this.toggleBadge('favorite', false) }} />}
@@ -123,9 +133,10 @@ render(){
                     {this.state.warning ? <ReportProblemIcon color="primary" onClick={() => { this.toggleBadge('warning', true) }} />
                         : <ReportProblemOutlinedIcon color="secondary" onClick={() => { this.toggleBadge('warning', false) }} />}
                 </IconButton>
+
                 <AddCircleIcon color="primary" onClick={this.handleNew} />
 
-                <br/>
+                <br />
                 {renderSearch}
             </div>
         )
@@ -134,7 +145,7 @@ render(){
 
 const mapStateToProps = (store) => {
     return {
-        store        
+        store
     }
 }
 

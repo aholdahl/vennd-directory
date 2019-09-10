@@ -9,7 +9,7 @@ const AboutPage = () => (
   <div>
     <div>
       <p>
-        This about page is for anyone to read!
+        Vennd is a diversity and inclusion directory designed for folks to speak for themselves and support businesses that support their identity.
       </p>
     </div>
   </div>

@@ -18,12 +18,14 @@ class BusinessForm extends Component {
         this.getCategories();
     }
 
+    //saves the list of available categories to a reducer for use in the dropdown menu
     getCategories = () => {
         this.props.dispatch({
             type: 'FETCH_CATEGORIES'
         })
     }
 
+    //saves the text input to the local state until submit
     handleInput = (event, property)=>{
         this.setState({
             ...this.state,
@@ -31,6 +33,7 @@ class BusinessForm extends Component {
         })
     }
 
+    //saves the category to the local state until submit
     handleDropdown = (event) => {
         this.setState({
             ...this.state,
@@ -38,6 +41,7 @@ class BusinessForm extends Component {
         })
     }
 
+    //When the Add button is clicked, all form info is sent to the database, the state is cleared, and the user is taken back to the Search page
     handleSubmit = (event)=>{
         event.preventDefault();
         this.props.dispatch({

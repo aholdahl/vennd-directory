@@ -1,5 +1,8 @@
 --database name "prime_app"
 
+--DBDesigner formats the information very differently from how we were taught.
+--I tried to update the code to match what we've learned, but it was throwing errors.
+
 CREATE TABLE "business" (
     "id" serial NOT NULL,
     "name" TEXT UNIQUE NOT NULL,
