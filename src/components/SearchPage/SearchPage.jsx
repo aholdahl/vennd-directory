@@ -22,7 +22,6 @@ class SearchBar extends Component {
 
     componentDidMount() {
         this.getCategories();
-        // this.getFavorites();
         this.handleSubmit();
     }
 
@@ -32,13 +31,6 @@ class SearchBar extends Component {
             type: 'FETCH_CATEGORIES'
         })
     }
-
-    // //saves the list of available favorites to a reducer so the Star icon can be rendered as applicable
-    // getFavorites = () => {
-    //     this.props.dispatch({
-    //         type: 'FETCH_FAVORITES'
-    //     })
-    // }
 
     //retrieves the search results via searchSaga from the database based on the specified parameters
     handleSubmit = () => {

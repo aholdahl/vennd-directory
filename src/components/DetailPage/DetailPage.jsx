@@ -11,6 +11,20 @@ import BlockIcon from '@material-ui/icons/Block';
 
 class DetailCard extends Component {
 
+    componentDidMount(){
+        this.getFavorite();
+    }
+
+    //saves the list of available favorites to a reducer so the Star icon can be rendered as applicable
+    getFavorite = () => {
+        this.props.dispatch({
+            type: 'FETCH_FAVORITE',
+            payload: {
+                business_id: this.props.store.detailReducer.id
+            }
+        })
+    }
+
     addFavorite = ()=>{
         this.props.dispatch({
             type: 'ADD_FAVORITE',
@@ -29,7 +43,25 @@ class DetailCard extends Component {
         })
     }
 
+    // handleFavorite = ()=>{
+        // for(let item of this.props.store.favoriteReducer){
+        //     if (item === this.props.store.detailReducer){
+        //         this.setState({
+        //             isFavorite: true
+        //         });
+        //     } 
+        // }
+    // }
+
     render() {
+        // console.log(this.props.store.favoriteReducer.length)
+        // console.log(this.props.store.detailReducer.id)
+        // console.log(renderFavorite)
+        // let renderFavorite = this.props.store.favoriteReducer.map((item)=>{
+        //     if(item === this.props.store.detailReducer.id){
+        //         return true
+        //     }
+        // })
 
         return (
             <Card>
@@ -64,13 +96,11 @@ class DetailCard extends Component {
                     <Link href={this.props.store.detailReducer.google_places_url}>Open in Google Maps</Link>
                 </CardContent>
                 <CardActions>
-                    <IconButton>
-                        {/* <StarIcon/> conditional rendering goes here */}
-                        <StarBorderIcon onClick={this.addFavorite} />
-                    </IconButton>
-                    <IconButton>
-                        <StarIcon onClick={this.removeFavorite} />
-                    </IconButton>
+                    {/* <StarIcon/> conditional rendering goes here */}
+                    {/* {JSON.stringify(renderFavorite)}  // on GlamDoll, returns as [null, true]*/}
+                    {/* <StarIcon onClick={this.addFavorite}/>
+                    <StarBorderIcon onClick={this.removeFavorite}/> */}
+                    {this.props.store.favoriteReducer.length > 0 ? <StarIcon onClick={this.addFavorite} /> : <StarBorderIcon onClick={this.removeFavorite} />}
                     <IconButton>
                         {this.props.store.detailReducer.verified && <CheckCircleIcon />}
                     </IconButton>

@@ -30,7 +30,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/categories', categoryRouter);
 app.use('/api/detail', detailRouter);
-app.use('/api/favorites', favoriteRouter);
+app.use('/api/favorite', favoriteRouter);
 app.use('/api/search', searchRouter);
 
 // Serve static files
