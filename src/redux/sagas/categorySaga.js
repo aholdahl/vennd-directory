@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { takeEvery, put } from 'redux-saga/effects';
 
-function* fetchSearch(action) {
+function* fetchCategories(action) {
     try {
-        let response = yield axios.get(`/api/search`, action.payload)
+        let response = yield axios.get(`/api/categories`)
         yield put({
-            type: 'SET_SEARCH',
+            type: 'SET_CATEGORIES',
             payload: response.data
         })
     } catch (error) {
@@ -14,7 +14,7 @@ function* fetchSearch(action) {
 }
 
 function* searchSaga() {
-    yield takeEvery('FETCH_SEARCH', fetchSearch);
+    yield takeEvery('FETCH_CATEGORIES', fetchCategories);
 }
 
 export default searchSaga;

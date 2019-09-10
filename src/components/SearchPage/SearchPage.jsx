@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { Select, MenuItem, OutlinedInput, Chip, InputBase, Button, IconButton } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
@@ -12,34 +13,16 @@ import ReportProblemOutlinedIcon from '@material-ui/icons/ReportProblemOutlined'
 import DoneIcon from '@material-ui/icons/Done';
 import SearchIcon from '@material-ui/icons/Search';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import SearchList from '../SearchList/SearchList';
 
 class SearchBar extends Component {
     state = {
         searchInput: '',
-        categoryList: [{
-            id: 1,
-            name: 'Education'
-        },
-        {
-            id: 2,
-            name: 'Food & Drink'
-        },
-        ],
-        selectedCategoryId: 0,
-        favorite: false,
-        saved: false,
-        lgbtqiaap: false,
-        poc: false,
-        accessible: false,
-        verified: false,
-        warning: false,
     }
 
     componentDidMount() {
-        this.props.dispatch({
-            type: 'FETCH_DIRECTORY',
-            payload: {searchInput: this.state.searchInput}           
-        })
+        this.handleSubmit();
+        this.getCategories();
     }
 
     handleInput = (event) => {
@@ -52,7 +35,13 @@ class SearchBar extends Component {
     handleSubmit = () => {
         this.props.dispatch({
             type: 'FETCH_SEARCH',
-            payload: this.state
+            payload: { searchInput: this.state.searchInput }           
+        })
+    }
+
+    getCategories = ()=>{
+        this.props.dispatch({
+            type: 'FETCH_CATEGORIES'
         })
     }
 
@@ -73,13 +62,20 @@ class SearchBar extends Component {
     handleNew = () => {
         this.props.history.push('/new');//history is undefined?
     }
-    
+
 render(){
+    let renderSearch = this.props.store.searchReducer.map((business)=>{
+        return (
+            <SearchList business={business}/>
+        )
+    })
+
         return (
             <div>
                 <SearchIcon color="primary" />
                 <input onChange={this.handleInput} /> {/* InputBase */}
                 <Button color="primary" variant="contained" onClick={this.handleSubmit}>Search</Button>
+                
                 <Select
                     value={this.state.selectedCategoryId}
                     onChange={this.handleDropdown}
@@ -88,12 +84,13 @@ render(){
                     <MenuItem value='0'>
                         <em>Category</em>
                     </MenuItem>
-                    {this.state.categoryList.map((type) => {
+                    {this.props.store.categoryReducer.map((type) => {
                         return (
-                            <MenuItem value={type.id}>{type.name}</MenuItem>
+                            <MenuItem value={type.id}>{type.description}</MenuItem>
                         )
                     })}
                 </Select>
+
                 {this.state.lgbtqiaap ?
                     <Chip color="primary" label="LGBTQIAAP" deleteIcon={<DoneIcon />} onClick={() => { this.toggleBadge('lgbtqiaap', true) }} />
                     : < Chip color="secondary" label="LGBTQIAAP" variant="outlined" onClick={() => { this.toggleBadge('lgbtqiaap', false) }} />}
@@ -120,6 +117,9 @@ render(){
                         : <ReportProblemOutlinedIcon color="secondary" onClick={() => { this.toggleBadge('warning', false) }} />}
                 </IconButton>
                 <AddCircleIcon color="primary" onClick={this.handleNew} />
+
+                <br/>
+                {renderSearch}
             </div>
         )
     }
@@ -127,8 +127,8 @@ render(){
 
 const mapStateToProps = (store) => {
     return {
-        store
+        store        
     }
 }
 
-export default connect(mapStateToProps)(SearchBar);
+export default withRouter(connect(mapStateToProps)(SearchBar));

@@ -18,6 +18,8 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 
 import SearchPage from '../SearchPage/SearchPage';
+import DetailPage from '../DetailPage/DetailPage';
+import BusinessForm from '../BusinessForm/BusinessForm';
 
 import './App.css';
 
@@ -45,6 +47,16 @@ class App extends Component {
               exact
               path="/search"
               component={SearchPage}
+            />
+            <Route
+              exact
+              path="/detail"
+              component={DetailPage}
+            />
+            <Route
+              exact
+              path="/new"
+              component={BusinessForm}
             />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
