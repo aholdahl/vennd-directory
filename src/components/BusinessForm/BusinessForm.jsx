@@ -24,6 +24,13 @@ class BusinessForm extends Component {
     //     })
     // }
 
+    handleInput = (event, property)=>{
+        this.setState({
+            ...this.state,
+            [property]: event.target.value
+        })
+    }
+
     handleDropdown = (event) => {
         this.setState({
             ...this.state,
@@ -33,16 +40,21 @@ class BusinessForm extends Component {
 
     handleSubmit = (event)=>{
         event.preventDefault();
+        this.props.dispatch({
+            type: 'ADD_BUSINESS',
+            payload: this.state
+        })
     }
 
     render(){
+        console.log(this.state)
         return (
-            <form>
-                <Input placeholder="Name" value={this.state.name}/>
-                <Input placeholder="Address" value={this.state.address}/>
-                <Input placeholder="City" value={this.state.city}/>
-                <Input placeholder="State" value={this.state.state_code}/>
-                <Input placeholder="Zip" value={this.state.zip}/>
+            <form onSubmit={this.handleSubmit}>
+                <Input placeholder="Name" value={this.state.name} onChange={(event)=>{this.handleInput(event, 'name')}}/>
+                <Input placeholder="Address" value={this.state.address} onChange={(event)=>{this.handleInput(event, 'address')}}/>
+                <Input placeholder="City" value={this.state.city} onChange={(event)=>{this.handleInput(event, 'city')}}/>
+                <Input placeholder="State" value={this.state.state_code} onChange={(event)=>{this.handleInput(event, 'state_code')}}/>
+                <Input placeholder="Zip" value={this.state.zip} onChange={(event)=>{this.handleInput(event, 'zip')}}/>
                 <Select
                     value={this.state.selectedCategoryId}
                     onChange={this.handleDropdown}
@@ -57,9 +69,9 @@ class BusinessForm extends Component {
                         )
                     })}
                 </Select>
-                <Input placeholder="Image URL" value={this.state.image_url}/>
-                <Input placeholder="Business URL" value={this.state.business_url}/>
-                <Input placeholder="Google Places URL" value={this.state.google_places_url}/>
+                <Input placeholder="Image URL" value={this.state.image_url} onChange={(event)=>{this.handleInput(event, 'image_url')}}/>
+                <Input placeholder="Business URL" value={this.state.business_url} onChange={(event)=>{this.handleInput(event, 'business_url')}}/>
+                <Input placeholder="Google Places URL" value={this.state.google_places_url} onChange={(event)=>{this.handleInput(event, 'google_places_url')}}/>
                 <Button variant="contained" color="primary" type="submit">Add</Button>
             </form>
                 )

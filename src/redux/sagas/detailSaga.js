@@ -47,11 +47,20 @@ function* fetchCurrent(action){
     }
 }
 
+function* addBusiness(action){
+    try {
+        yield axios.post(`api/detail`, action.payload)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 function* detailSaga() {
     // yield takeEvery('UPDATE_TAG', updateTag);
     // yield takeEvery('ADD_FAVORITE', addFavorite);
     // yield takeEvery('REMOVE_FAVORITE', removeFavorite);
     yield takeEvery('FETCH_CURRENT', fetchCurrent);
+    yield takeEvery('ADD_BUSINESS', addBusiness);
 }
 
 export default detailSaga;
