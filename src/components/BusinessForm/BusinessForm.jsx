@@ -14,15 +14,15 @@ class BusinessForm extends Component {
         selectedCategoryId: 0
     }
 
-    // componentDidMount() {
-    //     this.getCategories();
-    // }
+    componentDidMount() {
+        this.getCategories();
+    }
 
-    // getCategories = () => {
-    //     this.props.dispatch({
-    //         type: 'FETCH_CATEGORIES'
-    //     })
-    // }
+    getCategories = () => {
+        this.props.dispatch({
+            type: 'FETCH_CATEGORIES'
+        })
+    }
 
     handleInput = (event, property)=>{
         this.setState({
@@ -44,6 +44,17 @@ class BusinessForm extends Component {
             type: 'ADD_BUSINESS',
             payload: this.state
         })
+        this.setState({
+            name: '',
+            address: '',
+            city: '',
+            state_code: '',
+            zip: '',
+            image_url: '',
+            google_places_url: '',
+            selectedCategoryId: 0
+        })
+        this.props.history.push('/search')
     }
 
     render(){

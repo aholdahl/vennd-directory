@@ -19,7 +19,7 @@ import BlockIcon from '@material-ui/icons/Block';
 class DetailCard extends Component {
 
     // toggleFavorite = () => {
-    //     if(this.props.business.favorite === false){
+    //     if(this.props.store.detailReducer.favorite === false){
     //         this.props.dispatch({
     //             type: 'ADD_FAVORITE',
     //             payload: this.props.business.id

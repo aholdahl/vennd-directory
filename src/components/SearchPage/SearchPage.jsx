@@ -21,8 +21,21 @@ class SearchBar extends Component {
     }
 
     componentDidMount() {
-        this.handleSubmit();
         this.getCategories();
+        this.handleSubmit();
+        this.getFavorites();
+    }
+
+    getCategories = () => {
+        this.props.dispatch({
+            type: 'FETCH_CATEGORIES'
+        })
+    }
+
+    getFavorites = () => {
+        this.props.dispatch({
+            type: 'FETCH_FAVORITES'
+        })
     }
 
     handleInput = (event) => {
@@ -36,12 +49,6 @@ class SearchBar extends Component {
         this.props.dispatch({
             type: 'FETCH_SEARCH',
             payload: { searchInput: this.state.searchInput }           
-        })
-    }
-
-    getCategories = ()=>{
-        this.props.dispatch({
-            type: 'FETCH_CATEGORIES'
         })
     }
 
