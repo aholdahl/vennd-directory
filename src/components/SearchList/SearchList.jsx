@@ -15,6 +15,12 @@ class SearchList extends Component {
             type: 'FETCH_CURRENT',
             payload: { id: this.props.business.id }
         })
+        this.props.dispatch({
+            type: 'FETCH_FAVORITE',
+            payload: {
+                business_id: this.props.business.id
+            }
+        })
         this.props.history.push('/detail')
     }
 

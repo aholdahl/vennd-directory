@@ -16,6 +16,10 @@ function* fetchFavorite(action) {
 function* addFavorite(action){
     try {
         yield axios.post(`/api/favorite/${action.payload.business_id}`)
+        yield put ({
+            type: 'FETCH_FAVORITE',
+            payload: {business_id: action.payload.business_id}
+        })
     } catch (error){
         console.log(error)
     }
@@ -24,6 +28,10 @@ function* addFavorite(action){
 function* removeFavorite(action) {
     try {
         yield axios.delete(`/api/favorite/${action.payload.business_id}`)
+        yield put({
+            type: 'FETCH_FAVORITE',
+            payload: {business_id: action.payload.business_id}
+        })
     } catch (error) {
         console.log(error)
     }

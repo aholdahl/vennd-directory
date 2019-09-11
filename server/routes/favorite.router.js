@@ -26,7 +26,7 @@ router.delete('/:id', (req, res) => {
 
 router.get('/:id', (req, res)=>{
     console.log(req.user.id, req.params.id)
-    let queryText = `SELECT * FROM "favorites" WHERE "user_id" = $1 AND "business_id" = $2;`
+    let queryText = `SELECT count(id) FROM "favorites" WHERE "user_id" = $1 AND "business_id" = $2;`
     pool.query(queryText, [req.user.id, req.params.id])
     .then((result)=>{
         res.send(result.rows)
