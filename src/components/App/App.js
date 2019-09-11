@@ -26,7 +26,52 @@ import './App.css';
 class App extends Component {
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'})
+    this.fetchBusinesses();
+    this.fetchCategories();
+    this.fetchDemographics();
+    this.fetchFavorites();
+    this.fetchRatings();
+    this.fetchVotes();
   }
+
+  //saves the list of available categories via categorySaga to a reducer for use in the search parameters dropdown menu
+  fetchCategories = () => {
+    this.props.dispatch({
+      type: 'FETCH_CATEGORIES'
+    })
+  }
+
+  //retrieves the search results via searchSaga from the database based on the specified parameters
+  fetchBusinesses = () => {
+    this.props.dispatch({
+      type: 'FETCH_BUSINESSES'
+    })
+  }
+
+  fetchDemographics = ()=>{
+    this.props.dispatch({
+      type: 'FETCH_DEMOGRAPHICS'
+    })
+  }
+
+  fetchFavorites = ()=>{
+    this.props.dispatch({
+      type: 'FETCH_FAVORITES'
+    })
+  }
+
+  fetchRatings = ()=>{
+    this.props.dispatch({
+      type: 'FETCH_RATINGS'
+    })
+  }
+  
+  fetchVotes = ()=>{
+    this.props.dispatch({
+      type: 'FETCH_VOTES'
+    })
+  }
+
 
   render() {
     return (

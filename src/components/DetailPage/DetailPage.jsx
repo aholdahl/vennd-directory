@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card, CardContent, CardActionArea, Typography, CardActions, IconButton, Link } from '@material-ui/core';
+import VoteTable from '../VoteTable/VoteTable.jsx';
+import { Card, CardContent, CardActionArea, Typography, CardActions, IconButton, Link, Table, TableBody, TableCell, TableHead,TableRow, Paper } from '@material-ui/core';
 import { Chip } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
@@ -8,8 +9,52 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ReportProblemIcon from '@material-ui/icons/ReportProblem';
 import DoneIcon from '@material-ui/icons/Done';
 import BlockIcon from '@material-ui/icons/Block';
+// import { withStyles } from '@material-ui/core/styles';
+// import { Box } from '@material-ui/core';
+// import { Rating } from '@material-ui/lab';
+// import FavoriteIcon from '@material-ui/icons/Favorite';
+
+// const StyledRating = withStyles({
+//     iconFilled: {
+//         color: '#ff6d75',
+//     },
+//     iconHover: {
+//         color: '#ff3d47',
+//     },
+// })(Rating);
+
+// function getLabelText(value) {
+//     return `${value} Heart${value !== 1 ? 's' : ''}`;
+// }
 
 class DetailCard extends Component {
+
+    // state = {
+    //     rating: 4,
+    // }
+
+    // handleRate = (event) => {
+    // //     this.setState({
+    // //         ...this.state,
+    // //         rating: event.target.value
+    // //     })
+    // //     this.sendRating();
+    // // }
+    
+    // // sendRating = ()=>{
+    //     //need to create functionality to check for existing value in reducer
+    //     this.props.dispatch({
+    //         type: 'ADD_RATING',
+    //         payload: {
+    //             rating: this.state.rating,
+    //             business_id: this.props.store.detailReducer.id
+    //         }
+    //     })
+    //     // this.props.dispatch({
+    //     //     TYPE: 'UPDATE_RATING',
+    //     //     payload: { rating: event.target.value }
+    //     // })
+    // }
 
 //When the StarBorderIcon is clicked, the business id is sent to the database to be added, and the page is re-rendered
     addFavorite = ()=>{
@@ -64,16 +109,29 @@ class DetailCard extends Component {
                         <Link href={this.props.store.detailReducer.business_url}>Go to Website</Link>
                     </Typography>
                     <Link href={this.props.store.detailReducer.google_places_url}>Open in Google Maps</Link>
+                        {this.props.store.detailReducer.verified && <CheckCircleIcon />}
+                        {this.props.store.detailReducer.warning && <ReportProblemIcon />}
                 </CardContent>
                 <CardActions>
                     {this.props.store.favoriteReducer > 0 ? <StarIcon onClick={this.removeFavorite} /> : <StarBorderIcon onClick={this.addFavorite} />}
-                    <IconButton>
-                        {this.props.store.detailReducer.verified && <CheckCircleIcon />}
-                    </IconButton>
-                    <IconButton>
-                        {this.props.store.detailReducer.warning && <ReportProblemIcon />}
-                    </IconButton>
+   
+                    {/* <Box component="fieldset" mb={3} borderColor="transparent">
+                        <StyledRating onChange={(event) => { this.handleRate(event) }} name="customized-color" value={this.props.store.ratingReducer} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
+                    </Box> */}
                 </CardActions>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Demographic</TableCell>
+                                <TableCell>Voting Buttons</TableCell>
+                                <TableCell>Statistics</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {/* Map over demographics here */}
+                        </TableBody>
+                    </Table>
+                <VoteTable />
             </Card>
         )
     }

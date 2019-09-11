@@ -4,7 +4,7 @@ import { takeEvery, put } from 'redux-saga/effects';
 //gets details of clicked business from the database, then sends them to detailReducer
 function* fetchCurrent(action){
     try {
-        let response = yield axios.get(`/api/detail/${action.payload.id}`)
+        let response = yield axios.get(`/api/details/${action.payload.id}`)
         yield put ({
             type: 'SET_CURRENT',
             payload: response.data

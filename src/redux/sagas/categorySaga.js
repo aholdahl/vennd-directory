@@ -14,8 +14,8 @@ function* fetchCategories(action) {
     }
 }
 
-function* searchSaga() {
+function* categorySaga() {
     yield takeEvery('FETCH_CATEGORIES', fetchCategories);
 }
 
-export default searchSaga;
+export default categorySaga;

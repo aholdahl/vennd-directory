@@ -7,7 +7,7 @@ const router = express.Router();
 //need to rewrite to receive search parameters
 router.get('/', (req, res)=>{
     // if(req.body === {}){
-        let queryText = `SELECT "business"."id","business"."name","business"."address","business"."city","business"."state_code","business"."zip","business"."image_url", "business"."business_url","business"."google_places_url","business"."verified","business"."warning","business"."category_id","categories"."description" FROM "business" JOIN "categories" ON "business"."category_id" = "categories"."id";`
+    let queryText = `SELECT "business"."id","business"."name","business"."address","business"."city","business"."state_code","business"."zip","business"."image_url", "business"."business_url","business"."google_places_url","business"."verified","business"."warning","business"."category_id","categories"."description" FROM "business" JOIN "categories" ON "business"."category_id" = "categories"."id";`
     pool.query(queryText)
     .then((result)=>{
         res.send(result.rows)

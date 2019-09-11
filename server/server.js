@@ -13,6 +13,7 @@ const userRouter = require('./routes/user.router');
 const categoryRouter = require('./routes/category.router');
 const detailRouter = require('./routes/detail.router');
 const favoriteRouter = require('./routes/favorite.router');
+const ratingRouter = require('./routes/rating.router');
 const searchRouter = require('./routes/search.router');
 
 // Body parser middleware
@@ -31,6 +32,7 @@ app.use('/api/user', userRouter);
 app.use('/api/categories', categoryRouter);
 app.use('/api/detail', detailRouter);
 app.use('/api/favorite', favoriteRouter);
+app.use('/api/rating', ratingRouter);
 app.use('/api/search', searchRouter);
 
 // Serve static files
