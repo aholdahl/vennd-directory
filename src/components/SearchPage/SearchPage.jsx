@@ -94,7 +94,7 @@ class SearchBar extends Component {
                     </MenuItem>
                     {this.props.store.categoryReducer.map((type) => {
                         return (
-                            <MenuItem value={type.id}>{type.description}</MenuItem>
+                            <MenuItem key={type.id} value={type.id}>{type.description}</MenuItem>
                         )
                     })}
                 </Select>

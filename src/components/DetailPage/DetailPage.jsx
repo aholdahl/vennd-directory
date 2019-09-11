@@ -128,10 +128,10 @@ class DetailCard extends Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
+                            <VoteTable />
                             {/* Map over demographics here */}
                         </TableBody>
                     </Table>
-                <VoteTable />
             </Card>
         )
     }

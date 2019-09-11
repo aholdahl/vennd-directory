@@ -23,7 +23,7 @@ export default function* rootSaga() {
     loginSaga(),
     registrationSaga(),
     userSaga(),
-    businessSaga().
+    businessSaga(),
     categorySaga(),
     demographicSaga(),
     detailSaga(),

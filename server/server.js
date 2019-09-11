@@ -10,11 +10,14 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+const businessRouter = require('./routes/business.router');
 const categoryRouter = require('./routes/category.router');
+const demographicRouter = require('./routes/demographic.router');
 const detailRouter = require('./routes/detail.router');
 const favoriteRouter = require('./routes/favorite.router');
 const ratingRouter = require('./routes/rating.router');
 const searchRouter = require('./routes/search.router');
+const voteRouter = require ('./routes/vote.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -29,11 +32,14 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+app.use('/api/businesses', businessRouter);
 app.use('/api/categories', categoryRouter);
-app.use('/api/detail', detailRouter);
-app.use('/api/favorite', favoriteRouter);
-app.use('/api/rating', ratingRouter);
+app.use('/api/demographics', demographicRouter);
+app.use('/api/details', detailRouter);
+app.use('/api/favorites', favoriteRouter);
+app.use('/api/ratings', ratingRouter);
 app.use('/api/search', searchRouter);
+app.use('/api/votes', voteRouter);
 
 // Serve static files
 app.use(express.static('build'));
