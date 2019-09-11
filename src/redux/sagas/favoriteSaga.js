@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { takeEvery, put } from 'redux-saga/effects';
 
+//gets the count of favorites that represent the user-business relationship (should always be 1), then sends to favoriteReducer
 function* fetchFavorite(action) {
     try {
         let response = yield axios.get(`/api/favorite/${action.payload.business_id}`)
@@ -13,6 +14,7 @@ function* fetchFavorite(action) {
     }
 }
 
+//sends the favorited business to the server, then triggers new fetchFavorite request to update the page
 function* addFavorite(action){
     try {
         yield axios.post(`/api/favorite/${action.payload.business_id}`)
@@ -25,6 +27,7 @@ function* addFavorite(action){
     }
 }
 
+//sends the unfavorited business to the server, then triggers new fetchFavorite request to update the page
 function* removeFavorite(action) {
     try {
         yield axios.delete(`/api/favorite/${action.payload.business_id}`)
@@ -36,7 +39,6 @@ function* removeFavorite(action) {
         console.log(error)
     }
 }
-
 
 function* favoriteSaga() {
     yield takeEvery('FETCH_FAVORITE', fetchFavorite);

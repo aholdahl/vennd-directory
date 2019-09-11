@@ -5,7 +5,6 @@ import { takeEvery, put } from 'redux-saga/effects';
 function* fetchCurrent(action){
     try {
         let response = yield axios.get(`/api/detail/${action.payload.id}`)
-        console.log(response)
         yield put ({
             type: 'SET_CURRENT',
             payload: response.data

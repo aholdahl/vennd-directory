@@ -6,15 +6,28 @@ const router = express.Router();
 //could rewrite to loop through categoryReducer to find the match for rendering instead
 //need to rewrite to receive search parameters
 router.get('/', (req, res)=>{
-    let queryText = `SELECT "business"."id","business"."name","business"."address","business"."city","business"."state_code","business"."zip","business"."image_url", "business"."business_url","business"."google_places_url","business"."verified","business"."warning","business"."category_id","categories"."description" FROM "business" JOIN "categories" ON "business"."category_id" = "categories"."id";`
+    // if(req.body === {}){
+        let queryText = `SELECT "business"."id","business"."name","business"."address","business"."city","business"."state_code","business"."zip","business"."image_url", "business"."business_url","business"."google_places_url","business"."verified","business"."warning","business"."category_id","categories"."description" FROM "business" JOIN "categories" ON "business"."category_id" = "categories"."id";`
     pool.query(queryText)
     .then((result)=>{
-        console.log(result)
         res.send(result.rows)
     }).catch((error)=>{
         console.log(error);
         res.sendStatus(500);
     })
+    // } else {
+    //     let searchFor = `%${req.body.searchInput}%`
+    // console.log('in searchRouter', searchFor)
+    //     let queryText = `SELECT "business"."id","business"."name","business"."address","business"."city","business"."state_code","business"."zip","business"."image_url", "business"."business_url","business"."google_places_url","business"."verified","business"."warning","business"."category_id","categories"."description" FROM "business" JOIN "categories" ON "business"."category_id" = "categories"."id" WHERE "business"."name" ILIKE $1;`
+    //     pool.query(queryText, [searchFor])
+    //         .then((result) => {
+    //             console.log(result)
+    //             res.send(result.rows)
+    //         }).catch((error) => {
+    //             console.log(error);
+    //             res.sendStatus(500);
+    // })
+//}
 })
 
 module.exports = router;

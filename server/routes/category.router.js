@@ -7,7 +7,6 @@ router.get('/', (req, res) => {
     let queryText = `SELECT * FROM "categories";`
     pool.query(queryText)
         .then((result) => {
-            console.log(result)
             res.send(result.rows)
         }).catch((error) => {
             console.log(error);

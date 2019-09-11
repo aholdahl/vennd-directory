@@ -63,7 +63,6 @@ class BusinessForm extends Component {
     }
 
     render(){
-        console.log(this.state)
         return (
             <form onSubmit={this.handleSubmit}>
                 <Input placeholder="Name" value={this.state.name} onChange={(event)=>{this.handleInput(event, 'name')}}/>

@@ -11,6 +11,7 @@ import BlockIcon from '@material-ui/icons/Block';
 
 class DetailCard extends Component {
 
+//When the StarBorderIcon is clicked, the business id is sent to the database to be added, and the page is re-rendered
     addFavorite = ()=>{
         this.props.dispatch({
             type: 'ADD_FAVORITE',
@@ -20,6 +21,7 @@ class DetailCard extends Component {
         })
     }
 
+//When the StarIcon is clicked, the business id is sent to the database for deletion, and the page is re-rendered
     removeFavorite = () => {
         this.props.dispatch({
             type: 'REMOVE_FAVORITE',
