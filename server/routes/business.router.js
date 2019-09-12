@@ -4,7 +4,7 @@ const router = express.Router();
 
 //pulls all available businesses
 router.get('/', (req, res) => {
-    let queryText = `SELECT * FROM "businesses";`
+    let queryText = `SELECT * FROM "business";`
     pool.query(queryText)
         .then((result) => {
             res.send(result.rows)

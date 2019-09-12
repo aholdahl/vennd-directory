@@ -9,7 +9,7 @@ import detailReducer from './detailReducer';
 import favoriteReducer from './favoriteReducer';
 import ratingReducer from './ratingReducer';
 import searchReducer from './searchReducer';
-import voteReducer from './voteReducer'
+import voteReducer from './voteReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.

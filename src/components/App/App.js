@@ -34,44 +34,47 @@ class App extends Component {
     this.fetchVotes();
   }
 
-  //saves the list of available categories via categorySaga to a reducer for use in the search parameters dropdown menu
+  //saves the list of available categories via categorySaga to the categoryReducer
   fetchCategories = () => {
     this.props.dispatch({
       type: 'FETCH_CATEGORIES'
     })
   }
 
-  //retrieves the search results via searchSaga from the database based on the specified parameters
+  //saves the list of available businesses via businessSaga to the businessReducer
   fetchBusinesses = () => {
     this.props.dispatch({
       type: 'FETCH_BUSINESSES'
     })
   }
 
+  //saves the list of available demographics via demographicSaga to the demographicReducer
   fetchDemographics = ()=>{
     this.props.dispatch({
       type: 'FETCH_DEMOGRAPHICS'
     })
   }
 
+  //saves the list of available favorites via favoriteSaga to the favoriteReducer
   fetchFavorites = ()=>{
     this.props.dispatch({
       type: 'FETCH_FAVORITES'
     })
   }
 
+  //saves the list of available ratings via ratingSaga to the ratingReducer
   fetchRatings = ()=>{
     this.props.dispatch({
       type: 'FETCH_RATINGS'
     })
   }
   
+  //saves the list of available votes via voteSaga to the voteReducer
   fetchVotes = ()=>{
     this.props.dispatch({
       type: 'FETCH_VOTES'
     })
   }
-
 
   render() {
     return (

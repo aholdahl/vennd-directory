@@ -9,6 +9,10 @@ function* fetchBusinesses(action) {
             type: 'SET_BUSINESSES',
             payload: response.data
         })
+        yield put ({
+                type: 'SET_SEARCH',
+                payload: response.data
+            })
     } catch (error) {
         console.log(error)
     }

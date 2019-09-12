@@ -18,11 +18,14 @@ import SearchList from '../SearchList/SearchList';
 class SearchBar extends Component {
     state = {
         searchInput: '',
+        selectedCategoryId: 0,
     }
 
     componentDidMount() {
         this.getCategories();
-        this.handleSubmit();
+        this.props.dispatch({
+            type: 'FETCH_BUSINESSES'
+        });
     }
 
     //saves the list of available categories via categorySaga to a reducer for use in the search parameters dropdown menu
