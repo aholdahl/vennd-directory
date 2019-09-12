@@ -30,8 +30,8 @@ class App extends Component {
     this.fetchCategories();
     this.fetchDemographics();
     this.fetchFavorites();
-    this.fetchRatings();
-    this.fetchVotes();
+    // this.fetchRatings();
+    // this.fetchVotes();
   }
 
   //saves the list of available categories via categorySaga to the categoryReducer
@@ -63,18 +63,18 @@ class App extends Component {
   }
 
   //saves the list of available ratings via ratingSaga to the ratingReducer
-  fetchRatings = ()=>{
-    this.props.dispatch({
-      type: 'FETCH_RATINGS'
-    })
-  }
+  // fetchRatings = ()=>{
+  //   this.props.dispatch({
+  //     type: 'FETCH_RATINGS'
+  //   })
+  // }
   
   //saves the list of available votes via voteSaga to the voteReducer
-  fetchVotes = ()=>{
-    this.props.dispatch({
-      type: 'FETCH_VOTES'
-    })
-  }
+  // fetchVotes = ()=>{
+  //   this.props.dispatch({
+  //     type: 'FETCH_VOTES'
+  //   })
+  // }
 
   render() {
     return (

@@ -82,7 +82,7 @@ class DetailCard extends Component {
             <Card>
                 <CardContent>
                     <CardActionArea>
-                        <img src={this.props.store.detailReducer.image_url} />
+                        <img src={this.props.store.detailReducer.image_url} alt={this.props.store.detailReducer.name+' logo'}/>
                         <Typography>
                             {this.props.store.detailReducer.name}
                         </Typography>
@@ -128,7 +128,11 @@ class DetailCard extends Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            <VoteTable />
+                            {this.props.store.demographicReducer.map((demo)=>{
+                                return (
+                                    <VoteTable demographic={demo} key={demo.id}/>
+                                )
+                            })}
                             {/* Map over demographics here */}
                         </TableBody>
                     </Table>

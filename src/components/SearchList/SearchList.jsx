@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Card, CardContent, CardActionArea, Typography, CardActions, IconButton } from '@material-ui/core';
-import StarIcon from '@material-ui/icons/Star';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
+// import StarIcon from '@material-ui/icons/Star';
+// import StarBorderIcon from '@material-ui/icons/StarBorder';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ReportProblemIcon from '@material-ui/icons/ReportProblem';
 
@@ -17,6 +17,12 @@ class SearchList extends Component {
         })
         this.props.dispatch({
             type: 'FETCH_FAVORITE',
+            payload: {
+                business_id: this.props.business.id
+            }
+        })
+        this.props.dispatch({
+            type: 'FETCH_VOTES',
             payload: {
                 business_id: this.props.business.id
             }
@@ -36,7 +42,7 @@ class SearchList extends Component {
             <Card>
                 <CardContent onClick={this.handleSelect}>
                     <CardActionArea>
-                        <img className="thumbnail" src={this.props.business.image_url} />
+                        <img className="thumbnail" alt={this.props.business.name + ' logo'} src={this.props.business.image_url} />
                         <Typography>
                             {this.props.business.name}
                         </Typography>

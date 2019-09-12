@@ -77,7 +77,7 @@ class SearchBar extends Component {
         // maps over the search results and renders them to the DOM using the SearchList component
         let renderSearch = this.props.store.searchReducer.map((business) => {
             return (
-                <SearchList business={business} />
+                <SearchList business={business} key={business.id}/>
             )
         })
 
