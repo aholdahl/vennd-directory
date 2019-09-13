@@ -2,6 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+//pulls rating for the active user and business ID
 router.get('/:id', (req, res) => {
     console.log(req.params.id)
     let queryText = `SELECT * FROM "rating" WHERE "user_id" = $1 AND "business_id" = $2;`
@@ -14,6 +15,7 @@ router.get('/:id', (req, res) => {
         })
 })
 
+//adds new rating
 router.post('/', (req, res) => {
     // console.log('in ratingRouter:', req.user.id, req.body.business_id, req.body.rating)
     let queryText = `INSERT INTO "ratings" ("user_id", "business_id", "user_rating") VALUES ($1, $2, $3);`
@@ -26,6 +28,7 @@ router.post('/', (req, res) => {
         })
 })
 
+//updates existing rating
 // router.put('/:id', (req, res) => {
 //     let queryText = `;`
 //     pool.query(queryText, [req.user.id, ])

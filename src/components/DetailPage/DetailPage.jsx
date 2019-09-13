@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import VoteTable from '../VoteTable/VoteTable.jsx';
-import { Card, CardContent, CardActionArea, Typography, CardActions, IconButton, Link, Table, TableBody, TableCell, TableHead,TableRow, Paper } from '@material-ui/core';
-import { Chip } from '@material-ui/core';
+import { Card, CardContent, Typography, CardActions, Link, Table, TableBody, TableCell, TableHead,TableRow } from '@material-ui/core';
+// import { Chip } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ReportProblemIcon from '@material-ui/icons/ReportProblem';
-import DoneIcon from '@material-ui/icons/Done';
-import BlockIcon from '@material-ui/icons/Block';
+// import DoneIcon from '@material-ui/icons/Done';
+// import BlockIcon from '@material-ui/icons/Block';
 // import { withStyles } from '@material-ui/core/styles';
 // import { Box } from '@material-ui/core';
 // import { Rating } from '@material-ui/lab';

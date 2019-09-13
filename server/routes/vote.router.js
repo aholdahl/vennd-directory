@@ -14,6 +14,7 @@ router.get('/:id', (req, res) => {
         })
 })
 
+//adds a new vote
 router.post('/', (req, res)=>{
     let queryText = `INSERT INTO "votes" ("user_id", "business_id", "demographic_id", "vote") VALUES ($1, $2, $3, $4);`
     pool.query(queryText,[req.user.id, req.body.business_id, req.body.demographic_id, req.body.vote])
@@ -25,6 +26,7 @@ router.post('/', (req, res)=>{
     })
 })
 
+//updates an existing vote
 router.put('/', (req, res)=>{
     let queryText = `UPDATE "votes" SET "vote" = $1 WHERE "user_id" = $2 AND "business_id" = $3 AND "demographic_id" = $4;`
     pool.query(queryText, [req.body.vote, req.user.id, req.body.business_id, req.body.demographic_id])

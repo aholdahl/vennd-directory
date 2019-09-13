@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import { takeEvery, takeLatest, put } from 'redux-saga/effects';
+import { takeEvery, put } from 'redux-saga/effects';
 
 //gets the rating for the current user-business relationship, then sends to ratingReducer
 function* fetchRatings(action) {

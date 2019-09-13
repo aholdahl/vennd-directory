@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Select, MenuItem, OutlinedInput, Chip, Button, IconButton } from '@material-ui/core';
+import { Select, MenuItem, OutlinedInput, Button, Typography, IconButton } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
-import WatchLaterIcon from '@material-ui/icons/WatchLater';
-import ScheduleIcon from '@material-ui/icons/Schedule';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
-import ReportProblemIcon from '@material-ui/icons/ReportProblem';
-import ReportProblemOutlinedIcon from '@material-ui/icons/ReportProblemOutlined';
-import DoneIcon from '@material-ui/icons/Done';
+// import {Chip} from '@material-ui/core';
+// import WatchLaterIcon from '@material-ui/icons/WatchLater';
+// import ScheduleIcon from '@material-ui/icons/Schedule';
+// import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+// import CheckCircleOutlineIcon from '@material-ui/icons/CheckCircleOutline';
+// import ReportProblemIcon from '@material-ui/icons/ReportProblem';
+// import ReportProblemOutlinedIcon from '@material-ui/icons/ReportProblemOutlined';
+// import DoneIcon from '@material-ui/icons/Done';
 import SearchIcon from '@material-ui/icons/Search';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import SearchList from '../SearchList/SearchList';
@@ -112,10 +113,10 @@ class SearchBar extends Component {
                     <Chip color="primary" label="Accessible" deleteIcon={<DoneIcon />} onClick={() => { this.toggleBadge('accessible', true) }} />
                     : < Chip color="secondary" label="Accessible" variant="outlined" onClick={() => { this.toggleBadge('accessible', false) }} />} */}
 
-                <IconButton>
+                {/* <IconButton> */}
                     {this.state.favorite ? <StarIcon color="primary" onClick={() => { this.toggleBadge('favorite', true) }} />
                         : <StarBorderIcon color="secondary" onClick={() => { this.toggleBadge('favorite', false) }} />}
-                </IconButton>
+                {/* </IconButton> */}
                 {/* <IconButton>
                     {this.state.saved ? <WatchLaterIcon color="primary" onClick={() => { this.toggleBadge('saved', true) }} />
                         : <ScheduleIcon color="secondary" onClick={() => { this.toggleBadge('saved', false) }} />}
@@ -128,9 +129,10 @@ class SearchBar extends Component {
                     {this.state.warning ? <ReportProblemIcon color="primary" onClick={() => { this.toggleBadge('warning', true) }} />
                         : <ReportProblemOutlinedIcon color="secondary" onClick={() => { this.toggleBadge('warning', false) }} />}
                 </IconButton> */}
-
-                <AddCircleIcon color="primary" onClick={this.handleNew} />
-
+                <IconButton onClick={this.handleNew}>
+                    <Typography>Add Business</Typography>
+                    <AddCircleIcon color="primary"/>
+                </IconButton>
                 <br />
                 {renderSearch}
             </div>

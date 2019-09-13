@@ -9,7 +9,13 @@ const AboutPage = () => (
   <div>
     <div>
       <p>
-        Vennd is a diversity and inclusion directory designed for folks to speak for themselves and support businesses that support their identity.
+        Vennd is a diversity and inclusion directory designed to allow folks to search, save, and rate businesses based on their demographics. 
+        Our hope is that someday diversity and inclusion will be the norm. 
+        Until then, Vennd's goal is for diverse people to find safe and welcoming spaces to spend their time and money.
+        Anyone can use the Vennd search page. Only registered users will be able to add, favorite, or rate businesses. 
+        Rest assured, your data will only be used to provide anonymous statistics on this site. 
+        Personal information will never be shared with a third party.
+        Happy browsing!
       </p>
     </div>
   </div>

@@ -32,8 +32,8 @@ class VoteTable extends Component {
 
     render() {
 
+        //conditionally renders the Vote icon buttons based on the current vote
         let voteFilter = (this.props.store.voteReducer.filter((vote_id) => { return vote_id.demographic_id === this.props.demographic.id }))
-
         let renderVoteIcons = 
             this.props.store.voteReducer.map((vote) => {
                 if (vote.demographic_id === this.props.demographic.id) {
@@ -53,7 +53,7 @@ class VoteTable extends Component {
                         < ArrowDownwardOutlinedIcon onClick={() => { this.handleVote('down', this.props.demographic.id) }} />
                         </div >)
                     } 
-                } 
+                } return null;
             })
 
         return (

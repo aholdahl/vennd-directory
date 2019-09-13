@@ -17,7 +17,7 @@ function* fetchCurrent(action){
 //sends details of new business from form to database (no GET route since page will change and automatically update)
 function* addBusiness(action){
     try {
-        yield axios.post(`api/detail`, action.payload)
+        yield axios.post(`api/details`, action.payload)
     } catch (error) {
         console.log(error)
     }

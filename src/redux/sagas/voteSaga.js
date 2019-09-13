@@ -14,6 +14,7 @@ function* fetchVotes(action) {
     }
 }
 
+//adds a new vote
 function* addVote(action){
     try {
         yield axios.post(`/api/votes`, action.payload)
@@ -26,6 +27,7 @@ function* addVote(action){
     }
 }
 
+//updates an existing vote
 function* updateVote(action){
     try {
         yield axios.put(`/api/votes`, action.payload)

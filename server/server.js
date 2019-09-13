@@ -18,7 +18,7 @@ const favoriteRouter = require('./routes/favorite.router');
 const ratingRouter = require('./routes/rating.router');
 const searchRouter = require('./routes/search.router');
 const statRouter = require('./routes/stat.router');
-const voteRouter = require ('./routes/vote.router');
+const voteRouter = require('./routes/vote.router');
 
 // Body parser middleware
 app.use(bodyParser.json());

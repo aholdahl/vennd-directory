@@ -59,6 +59,7 @@ class BusinessForm extends Component {
             google_places_url: '',
             selectedCategoryId: 0
         })
+        alert('Business added!')
         this.props.history.push('/search')
     }
 
