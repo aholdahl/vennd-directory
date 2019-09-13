@@ -27,6 +27,12 @@ class SearchList extends Component {
                 business_id: this.props.business.id
             }
         })
+            this.props.dispatch({
+                type: 'FETCH_STATS',
+                payload: {
+                    business_id: this.props.business.id
+                }
+            })
         // this.props.dispatch({
         //     type: 'FETCH_RATING',
         //     payload: {
@@ -34,7 +40,9 @@ class SearchList extends Component {
         //     }
         // })
         this.props.history.push(`/detail/${this.props.business.id}`)
-    }
+        }
+        
+    
 
     render() {
         return (

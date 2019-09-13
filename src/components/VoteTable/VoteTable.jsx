@@ -32,6 +32,14 @@ class VoteTable extends Component {
 
     render() {
 
+        console.log(this.props.demographic.specific, this.props.store.statReducer.filter((stat_id) => { return stat_id.demographic_id === this.props.demographic.id }))
+        let statFilter = (this.props.store.statReducer.filter((stat_id) => { return stat_id.demographic_id === this.props.demographic.id }))
+        let renderStats = statFilter.map((stat) =>{
+            if (stat.vote !== ''){
+                return <p>{stat.vote}: {stat.count}</p>
+            } else {return null}
+        })
+
         //conditionally renders the Vote icon buttons based on the current vote
         let voteFilter = (this.props.store.voteReducer.filter((vote_id) => { return vote_id.demographic_id === this.props.demographic.id }))
         let renderVoteIcons = 
@@ -67,7 +75,7 @@ class VoteTable extends Component {
                     :
                         renderVoteIcons   
             }
-                <TableCell>{/* Demographic Statistics */}</TableCell>
+                <TableCell>{renderStats}</TableCell>
             </TableRow>
         )
     }
