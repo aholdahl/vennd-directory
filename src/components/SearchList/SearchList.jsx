@@ -37,7 +37,6 @@ class SearchList extends Component {
     }
 
     render() {
-
         return (
             <Card>
                 <CardContent onClick={this.handleSelect}>

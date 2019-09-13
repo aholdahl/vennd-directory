@@ -31,7 +31,9 @@ class VoteTable extends Component {
     }
 
     render() {
-        console.log(this.props.store.voteReducer.findIndex(i => i.id === this.props.demographic.id))
+
+        let voteFilter = (this.props.store.voteReducer.filter((vote_id) => { return vote_id.demographic_id === this.props.demographic.id }))
+
         let renderVoteIcons = 
             this.props.store.voteReducer.map((vote) => {
                 if (vote.demographic_id === this.props.demographic.id) {
@@ -50,20 +52,21 @@ class VoteTable extends Component {
                         < ArrowUpwardOutlinedIcon onClick={() => { this.handleVote('up', this.props.demographic.id) }} />
                         < ArrowDownwardOutlinedIcon onClick={() => { this.handleVote('down', this.props.demographic.id) }} />
                         </div >)
-                    }
+                    } 
                 } 
-                // return (
-                //     <div>
-                //         < ArrowUpwardOutlinedIcon onClick={() => { this.handleNewVote('up', this.props.demographic.id) }} />
-                //         < ArrowDownwardOutlinedIcon onClick={() => { this.handleNewVote('down', this.props.demographic.id) }} />
-                //     </div >
-                // )   
             })
 
         return (
             <TableRow >
                 <TableCell>{this.props.demographic.specific}</TableCell>
-                {renderVoteIcons}
+                {voteFilter[0] === undefined ?
+                    <div>
+                        < ArrowUpwardOutlinedIcon onClick={() => { this.handleNewVote('up', this.props.demographic.id) }} />
+                        < ArrowDownwardOutlinedIcon onClick={() => { this.handleNewVote('down', this.props.demographic.id) }} />
+                    </div >
+                    :
+                        renderVoteIcons   
+            }
                 <TableCell>{/* Demographic Statistics */}</TableCell>
             </TableRow>
         )
