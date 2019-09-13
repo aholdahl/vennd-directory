@@ -17,6 +17,7 @@ const detailRouter = require('./routes/detail.router');
 const favoriteRouter = require('./routes/favorite.router');
 const ratingRouter = require('./routes/rating.router');
 const searchRouter = require('./routes/search.router');
+const statRouter = require('./routes/stat.router');
 const voteRouter = require ('./routes/vote.router');
 
 // Body parser middleware
@@ -39,6 +40,7 @@ app.use('/api/details', detailRouter);
 app.use('/api/favorites', favoriteRouter);
 app.use('/api/ratings', ratingRouter);
 app.use('/api/search', searchRouter);
+app.use('/api/stats', statRouter);
 app.use('/api/votes', voteRouter);
 
 // Serve static files

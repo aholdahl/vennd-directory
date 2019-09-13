@@ -9,6 +9,7 @@ import detailReducer from './detailReducer';
 import favoriteReducer from './favoriteReducer';
 import ratingReducer from './ratingReducer';
 import searchReducer from './searchReducer';
+import statReducer from './statReducer';
 import voteReducer from './voteReducer';
 
 // rootReducer is the primary reducer for our entire project
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   favoriteReducer,
   ratingReducer,
   searchReducer,
+  statReducer,
   voteReducer,
 });
 

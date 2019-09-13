@@ -9,6 +9,7 @@ import detailSaga from './detailSaga';
 import favoriteSaga from './favoriteSaga';
 import ratingSaga from './ratingSaga';
 import searchSaga from './searchSaga';
+import statSaga from './statSaga';
 import voteSaga from './voteSaga';
 
 // rootSaga is the primary saga.
@@ -30,6 +31,7 @@ export default function* rootSaga() {
     favoriteSaga(),
     ratingSaga(),
     searchSaga(),
-    voteSaga()
+    statSaga(),
+    voteSaga(),
   ]);
 }
