@@ -38,11 +38,11 @@ class SearchList extends Component {
 
     render() {
         return (
-            <Card>
+            <Card className="businessCard">
                 <CardContent onClick={this.handleSelect}>
                     <CardActionArea>
                         <img className="thumbnail" alt={this.props.business.name + ' logo'} src={this.props.business.image_url} />
-                        <Typography>
+                        <Typography className="businessName">
                             {this.props.business.name}
                         </Typography>
                     </CardActionArea>

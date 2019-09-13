@@ -1,6 +1,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
+    background-color: rgb(177, 179, 116);
 }
 
 .alert {
@@ -50,8 +51,26 @@ input {
 
 .thumbnail {
  width: 100px;
+ border: 1px solid grey;
 }
 
 .logo {
  width: 200px;
+}
+
+.businessCard {
+    display: inline-block;
+    width: 400px;
+    height: 200px; 
+    margin: 10px;
+}
+
+.detailCard {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.businessCategory {
+    font-style: italic;
 }

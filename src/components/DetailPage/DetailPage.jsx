@@ -79,21 +79,19 @@ class DetailCard extends Component {
     render() {
 
         return (
-            <Card>
+            <Card className="detailCard">
                 <CardContent>
-                    <CardActionArea>
-                        <img className="logo" src={this.props.store.detailReducer.image_url} alt={this.props.store.detailReducer.name+' logo'}/>
-                        <Typography>
-                            {this.props.store.detailReducer.name}
-                        </Typography>
-                    </CardActionArea>
+                    <img className="logo" src={this.props.store.detailReducer.image_url} alt={this.props.store.detailReducer.name+' logo'}/>
+                    <Typography className="businessName">
+                        {this.props.store.detailReducer.name}
+                    </Typography>
                     <Typography>
                         {this.props.store.detailReducer.address}
                     </Typography>
                     <Typography>
                         {this.props.store.detailReducer.city}{', '}{this.props.store.detailReducer.state_code}{' '}{this.props.store.detailReducer.zip}
                     </Typography>
-                    <Typography>
+                    <Typography className="businessCategory">
                         {this.props.store.detailReducer.description}
                     </Typography>
                     {/* {this.props.store.detailReducer.lgbtqiaap ?
