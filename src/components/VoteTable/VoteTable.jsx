@@ -31,46 +31,39 @@ class VoteTable extends Component {
     }
 
     render() {
-
-        // let renderVoteIcons = this.props.store.voteReducer.map((vote) => {
-        let renderVoteIcons = () => {
-            for (let vote of this.props.store.voteReducer) {
+        console.log(this.props.store.voteReducer.findIndex(i => i.id === this.props.demographic.id))
+        let renderVoteIcons = 
+            this.props.store.voteReducer.map((vote) => {
                 if (vote.demographic_id === this.props.demographic.id) {
-                    if (vote.vote === 'up') {
-                        return (
-                            <TableCell>
-                                <ArrowUpwardOutlinedIcon onClick={() => { this.handleVote('', this.props.demographic.id) }} color="primary" />
-                                <ArrowDownwardOutlinedIcon onClick={() => { this.handleVote('down', this.props.demographic.id) }} />
-                            </TableCell>)
-                    } else if (vote.vote === 'down') {
-                        return (
-                            <TableCell>
-                                <ArrowUpwardOutlinedIcon onClick={() => { this.handleVote('up', this.props.demographic.id) }} />
-                                <ArrowDownwardOutlinedIcon onClick={() => { this.handleVote('', this.props.demographic.id) }} color="error" />
-                            </TableCell>)
-                    } else if (vote.vote === null) {
-                        return (
-                            <TableCell>
-                                <ArrowUpwardOutlinedIcon onClick={() => { this.handleVote('up', this.props.demographic.id) }} />
-                                <ArrowDownwardOutlinedIcon onClick={() => { this.handleVote('down', this.props.demographic.id) }} />
-                            </TableCell>
-                        )
+                    if(vote.vote === 'up'){ return(
+                        <div>
+                        <ArrowUpwardOutlinedIcon color="primary" onClick={() => { this.handleVote('', this.props.demographic.id) }} />
+                        <ArrowDownwardOutlinedIcon onClick={() => { this.handleVote('down', this.props.demographic.id) }} />
+                        </div>)
+                    } else if (vote.vote === 'down'){ return(
+                        <div>
+                        < ArrowUpwardOutlinedIcon onClick = {() => { this.handleVote('up', this.props.demographic.id) }} />
+                        < ArrowDownwardOutlinedIcon color="error" onClick = {() => { this.handleVote('', this.props.demographic.id) }} />
+                        </div>)
+                    } else if (vote.vote === ''){ return (
+                        <div>
+                        < ArrowUpwardOutlinedIcon onClick={() => { this.handleVote('up', this.props.demographic.id) }} />
+                        < ArrowDownwardOutlinedIcon onClick={() => { this.handleVote('down', this.props.demographic.id) }} />
+                        </div >)
                     }
-                    } 
-            } return (
-                <TableCell>
-                    <ArrowUpwardOutlinedIcon onClick={() => { this.handleNewVote('up', this.props.demographic.id) }} />
-                    <ArrowDownwardOutlinedIcon onClick={() => { this.handleNewVote('down', this.props.demographic.id) }} />
-                </TableCell>)
-            }
-        
+                } 
+                // return (
+                //     <div>
+                //         < ArrowUpwardOutlinedIcon onClick={() => { this.handleNewVote('up', this.props.demographic.id) }} />
+                //         < ArrowDownwardOutlinedIcon onClick={() => { this.handleNewVote('down', this.props.demographic.id) }} />
+                //     </div >
+                // )   
+            })
 
         return (
             <TableRow >
                 <TableCell>{this.props.demographic.specific}</TableCell>
-                {/* {renderVoteIcons} */}
-                <ArrowUpwardOutlinedIcon onClick={() => { this.handleNewVote('up', this.props.demographic.id) }} />
-                <ArrowDownwardOutlinedIcon onClick={() => { this.handleNewVote('down', this.props.demographic.id) }} />
+                {renderVoteIcons}
                 <TableCell>{/* Demographic Statistics */}</TableCell>
             </TableRow>
         )

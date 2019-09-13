@@ -82,7 +82,7 @@ class DetailCard extends Component {
             <Card>
                 <CardContent>
                     <CardActionArea>
-                        <img src={this.props.store.detailReducer.image_url} alt={this.props.store.detailReducer.name+' logo'}/>
+                        <img className="logo" src={this.props.store.detailReducer.image_url} alt={this.props.store.detailReducer.name+' logo'}/>
                         <Typography>
                             {this.props.store.detailReducer.name}
                         </Typography>
@@ -96,7 +96,7 @@ class DetailCard extends Component {
                     <Typography>
                         {this.props.store.detailReducer.description}
                     </Typography>
-                    {this.props.store.detailReducer.lgbtqiaap ?
+                    {/* {this.props.store.detailReducer.lgbtqiaap ?
                         <Chip label="LGBTQIAAP" deleteIcon={<DoneIcon />} />
                         : < Chip label="LGBTQIAAP" variant="outlined" deleteIcon={<BlockIcon />} />}
                     {this.props.store.detailReducer.poc ?
@@ -104,7 +104,7 @@ class DetailCard extends Component {
                         : < Chip label="POC" variant="outlined" deleteIcon={<BlockIcon />} />}
                     {this.props.store.detailReducer.accessible ?
                         <Chip label="Accessible" deleteIcon={<DoneIcon />} />
-                        : < Chip label="Accessible" variant="outlined" deleteIcon={<BlockIcon />} />}
+                        : < Chip label="Accessible" variant="outlined" deleteIcon={<BlockIcon />} />} */}
                     <Typography>
                         <Link href={this.props.store.detailReducer.business_url}>Go to Website</Link>
                     </Typography>
@@ -113,7 +113,7 @@ class DetailCard extends Component {
                         {this.props.store.detailReducer.warning && <ReportProblemIcon />}
                 </CardContent>
                 <CardActions>
-                    {this.props.store.favoriteReducer > 0 ? <StarIcon onClick={this.removeFavorite} /> : <StarBorderIcon onClick={this.addFavorite} />}
+                    {this.props.store.favoriteReducer > 0 ? <StarIcon onClick={this.removeFavorite} color="primary"/> : <StarBorderIcon onClick={this.addFavorite} color="secondary"/>}
    
                     {/* <Box component="fieldset" mb={3} borderColor="transparent">
                         <StyledRating onChange={(event) => { this.handleRate(event) }} name="customized-color" value={this.props.store.ratingReducer} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />

@@ -102,7 +102,7 @@ class SearchBar extends Component {
                     })}
                 </Select>
 
-                {this.state.lgbtqiaap ?
+                {/* {this.state.lgbtqiaap ?
                     <Chip color="primary" label="LGBTQIAAP" deleteIcon={<DoneIcon />} onClick={() => { this.toggleBadge('lgbtqiaap', true) }} />
                     : < Chip color="secondary" label="LGBTQIAAP" variant="outlined" onClick={() => { this.toggleBadge('lgbtqiaap', false) }} />}
                 {this.state.poc ?
@@ -110,13 +110,13 @@ class SearchBar extends Component {
                     : < Chip color="secondary" label="POC" variant="outlined" onClick={() => { this.toggleBadge('poc', false) }} />}
                 {this.state.accessible ?
                     <Chip color="primary" label="Accessible" deleteIcon={<DoneIcon />} onClick={() => { this.toggleBadge('accessible', true) }} />
-                    : < Chip color="secondary" label="Accessible" variant="outlined" onClick={() => { this.toggleBadge('accessible', false) }} />}
+                    : < Chip color="secondary" label="Accessible" variant="outlined" onClick={() => { this.toggleBadge('accessible', false) }} />} */}
 
                 <IconButton>
                     {this.state.favorite ? <StarIcon color="primary" onClick={() => { this.toggleBadge('favorite', true) }} />
                         : <StarBorderIcon color="secondary" onClick={() => { this.toggleBadge('favorite', false) }} />}
                 </IconButton>
-                <IconButton>
+                {/* <IconButton>
                     {this.state.saved ? <WatchLaterIcon color="primary" onClick={() => { this.toggleBadge('saved', true) }} />
                         : <ScheduleIcon color="secondary" onClick={() => { this.toggleBadge('saved', false) }} />}
                 </IconButton>
@@ -127,7 +127,7 @@ class SearchBar extends Component {
                 <IconButton>
                     {this.state.warning ? <ReportProblemIcon color="primary" onClick={() => { this.toggleBadge('warning', true) }} />
                         : <ReportProblemOutlinedIcon color="secondary" onClick={() => { this.toggleBadge('warning', false) }} />}
-                </IconButton>
+                </IconButton> */}
 
                 <AddCircleIcon color="primary" onClick={this.handleNew} />
 

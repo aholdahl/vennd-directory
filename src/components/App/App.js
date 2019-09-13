@@ -93,7 +93,7 @@ class App extends Component {
             />
             <Route
               exact
-              path="/detail"
+              path="/detail/:id"
               component={DetailPage}
             />
             <Route
