@@ -20,6 +20,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import SearchPage from '../SearchPage/SearchPage';
 import DetailPage from '../DetailPage/DetailPage';
 import BusinessForm from '../BusinessForm/BusinessForm';
+import EditPage from '../EditPage/EditPage';
 
 import './App.css';
 
@@ -121,6 +122,11 @@ class App extends Component {
               exact
               path="/info"
               component={InfoPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/edit/:id"
+              component={EditPage}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

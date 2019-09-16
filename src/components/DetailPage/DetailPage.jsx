@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import VoteTable from '../VoteTable/VoteTable.jsx';
-import { Card, CardContent, Typography, CardActions, Link, Table, TableBody, TableCell, TableHead, TableRow } from '@material-ui/core';
+import { Card, CardContent, Typography, CardActions, Link, Table, TableBody, TableCell, TableHead, TableRow, Button } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
@@ -76,10 +77,19 @@ class DetailCard extends Component {
         })
     }
 
-    render() {
+    //when the admin clicks the Edit button, navigates to Edit page
+    goToEdit = ()=>{
+        this.props.history.push(`/edit/${this.props.match.params.id}`)
+    }
 
+    render() {
         let isFavorite = (this.props.store.favoriteReducer.array_agg.filter((business_id) => { return business_id === this.props.store.detailReducer.id }))
 
+       let adminEdit = () => {
+            if (this.props.store.user.access_id === 1) {
+                return true
+            }
+        }
         return (
             <Card className="pageBody" className="detailCard">
                 <CardContent>
@@ -108,6 +118,7 @@ class DetailCard extends Component {
                         <Box component="fieldset" mb={3} borderColor="transparent">
                             <StyledRating onChange={this.handleRate} name="customized-color" value={this.props.store.ratingReducer.user_rating} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
                         </Box>
+                        {adminEdit && <Button variant="contained" color="primary" onClick={this.goToEdit}>Edit</Button>}
                     </CardActions>
                 </CardContent>
                 <Table>
@@ -137,4 +148,4 @@ const mapStateToProps = (store) => {
     }
 }
 
-export default connect(mapStateToProps)(DetailCard);
+export default withRouter(connect(mapStateToProps)(DetailCard));

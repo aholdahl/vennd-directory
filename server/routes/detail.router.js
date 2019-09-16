@@ -28,4 +28,30 @@ router.post('/', (req, res) => {
         })
 })
 
+//updates existing business details to table
+router.put('/', (req, res) => {
+    let business = req.body;
+    let queryText = `UPDATE "business" SET "name"=$1,"category_id"=$2,"address"=$3,"city"=$4,"state_code"=$5,"zip"=$6,"image_url"=$7,"business_url"=$8,"google_places_url"=$9,"verified"=$10,"warning"=$11 WHERE "id" = $12;`
+    pool.query(queryText, [business.name, business.category_id, business.address, business.city, business.state_code, business.zip, business.image_url, business.business_url, business.google_places_url, business.verified, business.warning, business.id])
+        .then((result) => {
+            res.sendStatus(200)
+        }).catch((error) => {
+            console.log(error)
+            res.sendStatus(500);
+        })
+})
+
+//deletes the current business from the table
+router.delete('/:id', (req, res)=>{
+    console.log(req.params.id)
+    let queryText = `DELETE FROM "business" WHERE "id" = $1;`
+    pool.query(queryText, [req.params.id])
+    .then((result)=>{
+        res.sendStatus(200)
+    }).catch((error)=>{
+        console.log(error)
+        res.sendStatus(500)
+    })
+})
+
 module.exports = router;

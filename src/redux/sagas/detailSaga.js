@@ -18,6 +18,30 @@ function* fetchCurrent(action) {
 function* addBusiness(action) {
     try {
         yield axios.post(`api/details`, action.payload)
+        yield put({
+            type: 'FETCH_BUSINESSES'
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+//sends details of updated business from form to database (no GET route since page will change and automatically update)
+function* updateBusiness(action) {
+    try {
+        yield axios.put(`api/details`, action.payload)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+//sends details of deleted business from form to database (no GET route since page will change and automatically update)
+function* deleteBusiness(action) {
+    try {
+        yield axios.delete(`api/details/${action.payload.id}`)
+        yield put({
+            type: 'FETCH_BUSINESSES'
+        })
     } catch (error) {
         console.log(error)
     }
@@ -26,6 +50,8 @@ function* addBusiness(action) {
 function* detailSaga() {
     yield takeEvery('FETCH_CURRENT', fetchCurrent);
     yield takeEvery('ADD_BUSINESS', addBusiness);
+    yield takeEvery('UPDATE_BUSINESS', updateBusiness);
+    yield takeEvery('DELETE_BUSINESS', deleteBusiness);
 }
 
 export default detailSaga;
