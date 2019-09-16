@@ -15,14 +15,14 @@ function* fetchFavorite(action) {
 }
 
 //sends the favorited business to the server, then triggers new fetchFavorite request to update the page
-function* addFavorite(action){
+function* addFavorite(action) {
     try {
         yield axios.post(`/api/favorites/${action.payload.business_id}`)
-        yield put ({
+        yield put({
             type: 'FETCH_FAVORITE',
-            payload: {business_id: action.payload.business_id}
+            payload: { business_id: action.payload.business_id }
         })
-    } catch (error){
+    } catch (error) {
         console.log(error)
     }
 }
@@ -33,7 +33,7 @@ function* removeFavorite(action) {
         yield axios.delete(`/api/favorites/${action.payload.business_id}`)
         yield put({
             type: 'FETCH_FAVORITE',
-            payload: {business_id: action.payload.business_id}
+            payload: { business_id: action.payload.business_id }
         })
     } catch (error) {
         console.log(error)
@@ -41,9 +41,8 @@ function* removeFavorite(action) {
 }
 
 function* favoriteSaga() {
-    // yield takeEvery ('FETCH_FAVORITES', fetchFavorites);
     yield takeEvery('FETCH_FAVORITE', fetchFavorite);
-    yield takeEvery ('ADD_FAVORITE', addFavorite);
+    yield takeEvery('ADD_FAVORITE', addFavorite);
     yield takeEvery('REMOVE_FAVORITE', removeFavorite);
 }
 

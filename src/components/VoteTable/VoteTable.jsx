@@ -6,8 +6,8 @@ import ArrowDownwardOutlinedIcon from '@material-ui/icons/ArrowDownwardOutlined'
 
 class VoteTable extends Component {
 
+    // If there has not been a vote for this user-business-demographic combination, a POST request will be sent to the database
     handleNewVote = (direction, demoId) => {
-        //need to create functionality to check for existing value in reducer
         this.props.dispatch({
             type: 'ADD_VOTE',
             payload: {
@@ -18,8 +18,8 @@ class VoteTable extends Component {
         })
     }
 
+    //If the user is changing their vote for this user-business-demographic combination, a PUT request will be sent to the database
     handleVote = (direction, demoId) => {
-        //need to create functionality to check for existing value in reducer
         this.props.dispatch({
             type: 'UPDATE_VOTE',
             payload: {

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   HashRouter as Router,
   Route,
@@ -6,7 +6,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
@@ -24,8 +24,8 @@ import BusinessForm from '../BusinessForm/BusinessForm';
 import './App.css';
 
 class App extends Component {
-  componentDidMount () {
-    this.props.dispatch({type: 'FETCH_USER'})
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_USER' })
     this.fetchBusinesses();
     this.fetchCategories();
     this.fetchDemographics();
@@ -68,7 +68,7 @@ class App extends Component {
   //     type: 'FETCH_RATINGS'
   //   })
   // }
-  
+
   //saves the list of available votes via voteSaga to the voteReducer
   // fetchVotes = ()=>{
   //   this.props.dispatch({
@@ -128,7 +128,8 @@ class App extends Component {
           <Footer />
         </div>
       </Router>
-  )}
+    )
+  }
 }
 
 export default connect()(App);

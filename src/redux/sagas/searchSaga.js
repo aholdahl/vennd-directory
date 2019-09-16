@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { takeEvery, put } from 'redux-saga/effects';
 
-//gets list of businesses from the database that match the search parameters, then sends them to searchReducer
+//gets list of businesses from the database that match the search input, then sends them to searchReducer
 function* fetchSearchName(action) {
     try {
         let response = yield axios.get(`/api/search/name/${action.payload.searchInput}`)
@@ -14,7 +14,7 @@ function* fetchSearchName(action) {
     }
 }
 
-//gets list of businesses from the database that match the search parameters, then sends them to searchReducer
+//gets list of businesses from the database that match the selected category, then sends them to searchReducer
 function* fetchSearchCategory(action) {
     try {
         let response = yield axios.get(`/api/search/category/${action.payload.selectedCategoryId}`)
@@ -27,7 +27,7 @@ function* fetchSearchCategory(action) {
     }
 }
 
-//gets list of businesses from the database that match the search parameters, then sends them to searchReducer
+//gets list of businesses from the database that where there is at least one upvote for the selected demographic, then sends them to searchReducer
 function* fetchSearchDemo(action) {
     try {
         let response = yield axios.get(`/api/search/demographic/${action.payload.demographic}`)

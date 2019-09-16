@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Select, MenuItem, OutlinedInput, Button, Typography, IconButton } from '@material-ui/core';
-import StarIcon from '@material-ui/icons/Star';
-import StarBorderIcon from '@material-ui/icons/StarBorder';
-import {Chip} from '@material-ui/core';
+// import StarIcon from '@material-ui/icons/Star';
+// import StarBorderIcon from '@material-ui/icons/StarBorder';
+import { Chip } from '@material-ui/core';
 import DoneIcon from '@material-ui/icons/Done';
 import SearchIcon from '@material-ui/icons/Search';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
@@ -17,7 +17,7 @@ class SearchBar extends Component {
         lgbtqiaap: false,
         poc: false,
         accessible: false,
-        selectedDemos: []
+        // favorite: false,
     }
 
     componentDidMount() {
@@ -64,14 +64,14 @@ class SearchBar extends Component {
     }
 
     //resets the page to show all businesses, resets the state to original values
-    handleClear = ()=>{
-        this.setState ({
+    handleClear = () => {
+        this.setState({
             searchInput: '',
             selectedCategoryId: 0,
             lgbtqiaap: false,
             poc: false,
             accessible: false,
-            selectedDemos: []
+            favorite: false,
         })
         this.props.dispatch({
             type: 'FETCH_BUSINESSES'
@@ -94,28 +94,29 @@ class SearchBar extends Component {
         })
         this.props.dispatch({
             type: 'FETCH_SEARCH_CATEGORY',
-            payload: {selectedCategoryId: Number(event.target.value)}
+            payload: { selectedCategoryId: Number(event.target.value) }
         })
     }
 
     //saves the chip tags to the local state until submit
     toggleBadge = (property, demo_id, current) => {
+        if (current === false) {
             this.setState({
                 ...this.state,
-                [property]: !true,
+                [property]: true,
             })
             this.props.dispatch({
                 type: 'FETCH_SEARCH_DEMOGRAPHIC',
-                payload: {demographic: demo_id}
+                payload: { demographic: demo_id }
             })
+        } else if (current === true) {
+            this.handleClear();
         }
-        
-        // FETCH_SEARCH_DEMOGRAPHIC
-    
+    }
 
     //when the Add New icon is clicked, takes user to the BusinessForm component
     handleNew = () => {
-        this.props.history.push('/new');//history is undefined?
+        this.props.history.push('/new');
     }
 
     render() {
@@ -124,7 +125,7 @@ class SearchBar extends Component {
         // maps over the search results and renders them to the DOM using the SearchList component
         let renderSearch = this.props.store.searchReducer.map((business) => {
             return (
-                <SearchList business={business} key={business.id}/>
+                <SearchList business={business} key={business.id} />
             )
         })
 
@@ -158,17 +159,15 @@ class SearchBar extends Component {
                     <Chip color="primary" label="Accessible" deleteIcon={<DoneIcon />} onClick={() => { this.toggleBadge('accessible', 3, true) }} />
                     : < Chip color="secondary" label="Accessible" variant="outlined" onClick={() => { this.toggleBadge('accessible', 3, false) }} />}
 
-                <IconButton>
+                {/* <IconButton>
                     {this.state.favorite ? <StarIcon color="primary" onClick={() => { this.toggleBadge('favorite', true) }} />
                         : <StarBorderIcon color="secondary" onClick={() => { this.toggleBadge('favorite', false) }} />}
-                </IconButton>
-
+                </IconButton> */}
+                <br />
                 <Button color="primary" variant="contained" onClick={this.handleSubmit}>Search</Button>
                 <Button color="primary" variant="contained" onClick={this.handleClear}>Clear</Button>
-
-                <br />
                 <IconButton onClick={this.handleNew}>
-                    <AddCircleIcon color="primary"/>
+                    <AddCircleIcon color="primary" />
                     <Typography color="primary">Add Business</Typography>
                 </IconButton>
                 <br />

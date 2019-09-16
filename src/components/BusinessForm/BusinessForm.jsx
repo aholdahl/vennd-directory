@@ -27,7 +27,7 @@ class BusinessForm extends Component {
     }
 
     //saves the text input to the local state until submit
-    handleInput = (event, property)=>{
+    handleInput = (event, property) => {
         this.setState({
             ...this.state,
             [property]: event.target.value
@@ -43,7 +43,7 @@ class BusinessForm extends Component {
     }
 
     //When the Add button is clicked, all form info is sent to the database, the state is cleared, and the user is taken back to the Search page
-    handleSubmit = (event)=>{
+    handleSubmit = (event) => {
         event.preventDefault();
         this.props.dispatch({
             type: 'ADD_BUSINESS',
@@ -63,14 +63,14 @@ class BusinessForm extends Component {
         this.props.history.push('/search')
     }
 
-    render(){
+    render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <Input placeholder="Name" value={this.state.name} onChange={(event)=>{this.handleInput(event, 'name')}}/>
-                <Input placeholder="Address" value={this.state.address} onChange={(event)=>{this.handleInput(event, 'address')}}/>
-                <Input placeholder="City" value={this.state.city} onChange={(event)=>{this.handleInput(event, 'city')}}/>
-                <Input placeholder="State" value={this.state.state_code} onChange={(event)=>{this.handleInput(event, 'state_code')}}/>
-                <Input placeholder="Zip" value={this.state.zip} onChange={(event)=>{this.handleInput(event, 'zip')}}/>
+                <Input placeholder="Name" value={this.state.name} onChange={(event) => { this.handleInput(event, 'name') }} />
+                <Input placeholder="Address" value={this.state.address} onChange={(event) => { this.handleInput(event, 'address') }} />
+                <Input placeholder="City" value={this.state.city} onChange={(event) => { this.handleInput(event, 'city') }} />
+                <Input placeholder="State" value={this.state.state_code} onChange={(event) => { this.handleInput(event, 'state_code') }} />
+                <Input placeholder="Zip" value={this.state.zip} onChange={(event) => { this.handleInput(event, 'zip') }} />
                 <Select
                     value={this.state.selectedCategoryId}
                     onChange={this.handleDropdown}
@@ -85,16 +85,16 @@ class BusinessForm extends Component {
                         )
                     })}
                 </Select>
-                <Input placeholder="Image URL" value={this.state.image_url} onChange={(event)=>{this.handleInput(event, 'image_url')}}/>
-                <Input placeholder="Business URL" value={this.state.business_url} onChange={(event)=>{this.handleInput(event, 'business_url')}}/>
-                <Input placeholder="Google Places URL" value={this.state.google_places_url} onChange={(event)=>{this.handleInput(event, 'google_places_url')}}/>
+                <Input placeholder="Image URL" value={this.state.image_url} onChange={(event) => { this.handleInput(event, 'image_url') }} />
+                <Input placeholder="Business URL" value={this.state.business_url} onChange={(event) => { this.handleInput(event, 'business_url') }} />
+                <Input placeholder="Google Places URL" value={this.state.google_places_url} onChange={(event) => { this.handleInput(event, 'google_places_url') }} />
                 <Button variant="contained" color="primary" type="submit">Add</Button>
             </form>
-                )
-            }
-        }
-        
-const mapStateToProps = (store)=>{
+        )
+    }
+}
+
+const mapStateToProps = (store) => {
     return {
         store
     }

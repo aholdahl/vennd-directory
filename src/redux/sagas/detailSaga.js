@@ -2,20 +2,20 @@ import axios from 'axios';
 import { takeEvery, put } from 'redux-saga/effects';
 
 //gets details of clicked business from the database, then sends them to detailReducer
-function* fetchCurrent(action){
+function* fetchCurrent(action) {
     try {
         let response = yield axios.get(`/api/details/${action.payload.id}`)
-        yield put ({
+        yield put({
             type: 'SET_CURRENT',
             payload: response.data
         })
-    } catch(error){
+    } catch (error) {
         console.log(error)
     }
 }
 
 //sends details of new business from form to database (no GET route since page will change and automatically update)
-function* addBusiness(action){
+function* addBusiness(action) {
     try {
         yield axios.post(`api/details`, action.payload)
     } catch (error) {

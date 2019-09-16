@@ -15,27 +15,27 @@ function* fetchVotes(action) {
 }
 
 //adds a new vote
-function* addVote(action){
+function* addVote(action) {
     try {
         yield axios.post(`/api/votes`, action.payload)
-        yield put ({
+        yield put({
             type: 'FETCH_VOTES',
             payload: action.payload
         })
-    } catch (error){
+    } catch (error) {
         console.log(error)
     }
 }
 
 //updates an existing vote
-function* updateVote(action){
+function* updateVote(action) {
     try {
         yield axios.put(`/api/votes`, action.payload)
-        yield put ({
+        yield put({
             type: 'FETCH_VOTES',
             payload: action.payload
         })
-    } catch (error){
+    } catch (error) {
         console.log(error)
     }
 }
