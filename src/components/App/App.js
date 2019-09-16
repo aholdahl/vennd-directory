@@ -81,7 +81,7 @@ class App extends Component {
       <Router>
         <div>
           <Nav />
-          <Switch>
+          <Switch className="pageBody">
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
             {/* Visiting localhost:3000/about will show the about page.

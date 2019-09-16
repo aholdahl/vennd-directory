@@ -4,15 +4,19 @@ body {
     background-color: rgb(177, 179, 116);
 }
 
+.pageBody {
+    margin: 10px;
+}
+
 .alert {
     background-color: #ff4545;
     margin: 50px;
 }
 
 form {
-    background-color: #dbd5d5;
-    width: 30%;
-    height: 250px;
+    background-color: floralwhite;
+    width: fit-content;
+    height: fit-content;
     margin: 20px auto;
     padding: 25px;
     border-radius: 2px;
@@ -23,10 +27,15 @@ input {
     margin-bottom: 10px;
 }
 
+.inputs {
+    background-color: floralwhite;
+    border-radius: 5px;
+}
+
 .log-in, .log-out, .register {
-  background-color: #00acb0;
+  background-color: #3f51b5;
   border-radius: 4px;
-  color: #f8f8f8;
+  color: floralwhite;
   min-height: 50px;
   min-width: 100px;
   outline:0;
@@ -34,7 +43,7 @@ input {
 }
 
 .log-in:hover, .log-out:hover, .register:hover {
-  background-color: #008183;
+  background-color: #3f51b5;
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */
@@ -60,9 +69,11 @@ input {
 
 .businessCard {
     display: inline-block;
-    width: 400px;
+    /* width: 400px; */
+    width: extend;
     height: 250px; 
     margin: 10px;
+    padding: 5px;
 }
 
 .detailCard {

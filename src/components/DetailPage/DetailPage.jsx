@@ -81,7 +81,7 @@ class DetailCard extends Component {
         let isFavorite = (this.props.store.favoriteReducer.array_agg.filter((business_id) => { return business_id === this.props.store.detailReducer.id }))
 
         return (
-            <Card className="detailCard">
+            <Card className="pageBody" className="detailCard">
                 <CardContent>
                     <img className="logo" src={this.props.store.detailReducer.image_url} alt={this.props.store.detailReducer.name + ' logo'} />
                     <Typography className="businessName">
@@ -100,15 +100,16 @@ class DetailCard extends Component {
                         <Link href={this.props.store.detailReducer.business_url}>Go to Website</Link>
                     </Typography>
                     <Link href={this.props.store.detailReducer.google_places_url}>Open in Google Maps</Link>
+                    <br/>
                     {this.props.store.detailReducer.verified && <CheckCircleIcon />}
                     {this.props.store.detailReducer.warning && <ReportProblemIcon />}
+                    <CardActions>
+                        {isFavorite.length > 0 ? <StarIcon onClick={this.removeFavorite} color="primary" /> : <StarBorderIcon onClick={this.addFavorite} color="secondary" />}
+                        <Box component="fieldset" mb={3} borderColor="transparent">
+                            <StyledRating onChange={this.handleRate} name="customized-color" value={this.props.store.ratingReducer.user_rating} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
+                        </Box>
+                    </CardActions>
                 </CardContent>
-                <CardActions>
-                    {isFavorite.length > 0 ? <StarIcon onClick={this.removeFavorite} color="primary" /> : <StarBorderIcon onClick={this.addFavorite} color="secondary" />}
-                    <Box component="fieldset" mb={3} borderColor="transparent">
-                        <StyledRating onChange={this.handleRate} name="customized-color" value={this.props.store.ratingReducer.user_rating} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
-                    </Box>
-                </CardActions>
                 <Table>
                     <TableHead>
                         <TableRow>

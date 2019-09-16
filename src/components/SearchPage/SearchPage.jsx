@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Select, MenuItem, OutlinedInput, Button, Typography, IconButton } from '@material-ui/core';
+import { Select, MenuItem, OutlinedInput, Button, Typography, IconButton, Grid } from '@material-ui/core';
 // import StarIcon from '@material-ui/icons/Star';
 // import StarBorderIcon from '@material-ui/icons/StarBorder';
 import { Chip } from '@material-ui/core';
@@ -130,14 +130,14 @@ class SearchBar extends Component {
         })
 
         return (
-            <div>
+            <div className="pageBody">
                 <SearchIcon color="primary" />
-                <OutlinedInput onChange={this.handleInput} />
+                <OutlinedInput className="inputs" onChange={this.handleInput} />
 
                 <Select
                     value={this.state.selectedCategoryId}
                     onChange={this.handleDropdown}
-                    input={<OutlinedInput name="select category" />}
+                    input={<OutlinedInput className="inputs" name="select category" />}
                 >
                     <MenuItem value='0'>
                         <em>Category</em>
@@ -171,7 +171,9 @@ class SearchBar extends Component {
                     <Typography color="primary">Add Business</Typography>
                 </IconButton>
                 <br />
-                {renderSearch}
+                <Grid container spacing={0} alignItems={'center'} justify={'space-around'}>
+                    {renderSearch}
+                </Grid>
             </div>
         )
     }

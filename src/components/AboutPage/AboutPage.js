@@ -6,7 +6,7 @@ import React from 'react';
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 const AboutPage = () => (
-  <p>
+  <p className="pageBody">
     Vennd is a diversity and inclusion directory designed to allow folks to search, save, and rate businesses based on their demographics.
     Our hope is that someday diversity and inclusion will be the norm.
     Until then, Vennd's goal is for diverse people to find safe and welcoming spaces to spend their time and money.

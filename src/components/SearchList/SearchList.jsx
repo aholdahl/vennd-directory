@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Card, CardContent, CardActionArea, Typography, CardActions, IconButton } from '@material-ui/core';
+import { Card, CardContent, CardActionArea, Typography, CardActions, IconButton, Grid } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
@@ -37,28 +37,30 @@ class SearchList extends Component {
         let isFavorite = (this.props.store.favoriteReducer.array_agg.filter((business_id) => { return business_id === this.props.business.id }))
 
         return (
-            <Card className="businessCard">
-                <CardContent onClick={this.handleSelect}>
-                    <CardActionArea>
-                        <img className="thumbnail" alt={this.props.business.name + ' logo'} src={this.props.business.image_url} />
-                        <Typography className="businessName">
-                            {this.props.business.name}
+            <Grid item xs={4} className="pageBody">
+                <Card className="businessCard">
+                    <CardContent onClick={this.handleSelect}>
+                        <CardActionArea>
+                            <img className="thumbnail" alt={this.props.business.name + ' logo'} src={this.props.business.image_url} />
+                            <Typography className="businessName">
+                                {this.props.business.name}
+                            </Typography>
+                        </CardActionArea>
+                        <Typography>
+                            {this.props.business.address}{' '}{this.props.business.city}{', '}{this.props.business.state_code}{' '}{this.props.business.zip}
                         </Typography>
-                    </CardActionArea>
-                    <Typography>
-                        {this.props.business.address}{' '}{this.props.business.city}{', '}{this.props.business.state_code}{' '}{this.props.business.zip}
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                    {isFavorite.length > 0 ? <StarIcon /> : <StarBorderIcon />}
-                    <IconButton>
-                        {this.props.business.verified && <CheckCircleIcon />}
-                    </IconButton>
-                    <IconButton>
-                        {this.props.business.warning && <ReportProblemIcon />}
-                    </IconButton>
-                </CardActions>
-            </Card>
+                    </CardContent>
+                    <CardActions>
+                        {isFavorite.length > 0 ? <StarIcon /> : <StarBorderIcon />}
+                        <IconButton>
+                            {this.props.business.verified && <CheckCircleIcon />}
+                        </IconButton>
+                        <IconButton>
+                            {this.props.business.warning && <ReportProblemIcon />}
+                        </IconButton>
+                    </CardActions>
+                </Card>
+            </Grid>
         )
     }
 }
