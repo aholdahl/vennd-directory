@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Card, CardContent, CardActionArea, Typography, CardActions, IconButton } from '@material-ui/core';
-// import StarIcon from '@material-ui/icons/Star';
-// import StarBorderIcon from '@material-ui/icons/StarBorder';
+import StarIcon from '@material-ui/icons/Star';
+import StarBorderIcon from '@material-ui/icons/StarBorder';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ReportProblemIcon from '@material-ui/icons/ReportProblem';
 
@@ -14,12 +14,6 @@ class SearchList extends Component {
         this.props.dispatch({
             type: 'FETCH_CURRENT',
             payload: { id: this.props.business.id }
-        })
-        this.props.dispatch({
-            type: 'FETCH_FAVORITE',
-            payload: {
-                business_id: this.props.business.id
-            }
         })
         this.props.dispatch({
             type: 'FETCH_VOTES',
@@ -39,6 +33,9 @@ class SearchList extends Component {
     
 
     render() {
+
+        let isFavorite = (this.props.store.favoriteReducer.array_agg.filter((business_id) => { return business_id === this.props.business.id }))
+
         return (
             <Card className="businessCard">
                 <CardContent onClick={this.handleSelect}>
@@ -53,7 +50,7 @@ class SearchList extends Component {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    {/* <StarIcon/> conditional rendering goes here */}
+                    {isFavorite.length > 0 ? <StarIcon /> : <StarBorderIcon />}
                     <IconButton>
                         {this.props.business.verified && <CheckCircleIcon />}
                     </IconButton>
@@ -66,4 +63,10 @@ class SearchList extends Component {
     }
 }
 
-export default withRouter(connect()(SearchList));
+const mapStateToProps = (store) => {
+    return {
+        store
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(SearchList));

@@ -4,7 +4,7 @@ import { takeEvery, put } from 'redux-saga/effects';
 //gets the count of favorites that represent the user-business relationship (should always be 1), then sends to favoriteReducer
 function* fetchFavorite(action) {
     try {
-        let response = yield axios.get(`/api/favorites/${action.payload.business_id}`)
+        let response = yield axios.get(`/api/favorites`)
         yield put({
             type: 'SET_FAVORITE',
             payload: response.data
