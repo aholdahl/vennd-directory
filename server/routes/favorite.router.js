@@ -3,9 +3,9 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 //pulls favorite for the active user and business ID
-router.get('/:id', (req, res) => {
-    let queryText = `SELECT count(id) FROM "favorites" WHERE "user_id" = $1 AND "business_id" = $2;`
-    pool.query(queryText, [req.user.id, req.params.id])
+router.get('/', (req, res) => {
+    let queryText = `SELECT array_agg("business_id") FROM "favorites" WHERE "user_id" = $1;`
+    pool.query(queryText, [req.user.id])
         .then((result) => {
             res.send(result.rows)
         }).catch((error) => {

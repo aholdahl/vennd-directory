@@ -78,6 +78,8 @@ class DetailCard extends Component {
 
     render() {
 
+        let isFavorite = (this.props.store.favoriteReducer.array_agg.filter((business_id)=>{return business_id === this.props.store.detailReducer.id}))
+
         return (
             <Card className="detailCard">
                 <CardContent>
@@ -102,8 +104,7 @@ class DetailCard extends Component {
                         {this.props.store.detailReducer.warning && <ReportProblemIcon />}
                 </CardContent>
                 <CardActions>
-                    {this.props.store.favoriteReducer > 0 ? <StarIcon onClick={this.removeFavorite} color="primary"/> : <StarBorderIcon onClick={this.addFavorite} color="secondary"/>}
-   
+                    {isFavorite.length > 0 ? <StarIcon onClick={this.removeFavorite} color="primary"/> : <StarBorderIcon onClick={this.addFavorite} color="secondary"/>}
                     <Box component="fieldset" mb={3} borderColor="transparent">
                         <StyledRating onChange={this.handleRate} name="customized-color" value={this.props.store.ratingReducer.user_rating} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
                     </Box>

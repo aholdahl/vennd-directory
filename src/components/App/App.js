@@ -49,16 +49,16 @@ class App extends Component {
   }
 
   //saves the list of available demographics via demographicSaga to the demographicReducer
-  fetchDemographics = ()=>{
+  fetchDemographics = () => {
     this.props.dispatch({
       type: 'FETCH_DEMOGRAPHICS'
     })
   }
 
   //saves the list of available favorites via favoriteSaga to the favoriteReducer
-  fetchFavorites = ()=>{
+  fetchFavorites = () => {
     this.props.dispatch({
-      type: 'FETCH_FAVORITES'
+      type: 'FETCH_FAVORITE',
     })
   }
 
