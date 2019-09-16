@@ -130,8 +130,8 @@ class SearchBar extends Component {
                         : <ReportProblemOutlinedIcon color="secondary" onClick={() => { this.toggleBadge('warning', false) }} />}
                 </IconButton> */}
                 <IconButton onClick={this.handleNew}>
-                    <Typography>Add Business</Typography>
                     <AddCircleIcon color="primary"/>
+                    <Typography color="primary">Add Business</Typography>
                 </IconButton>
                 <br />
                 {renderSearch}

@@ -1,21 +1,14 @@
-// const ratingReducer = (state = 0, action) => {
-//     switch (action.type) {
-//         case 'SET_RATING':
-//             return action.payload[0];
-//         default:
-//             return state;
-//     }
-// }
+const ratingReducer = (state = {}, action) => {
+    switch (action.type) {
+        case 'SET_RATING':
+            if(action.payload.length >0){
+                return action.payload[0];
+            } else {
+                return {user_rating: undefined}
+            }
+        default:
+            return state;
+    }
+}
 
-// export default ratingReducer;
-
-// const ratingReducer = (state = 0, action) => {
-//     switch (action.type) {
-//         case 'SET_RATINGS':
-//             return action.payload[0];
-//         default:
-//             return state;
-//     }
-// }
-
-// export default ratingReducer;
+export default ratingReducer;
