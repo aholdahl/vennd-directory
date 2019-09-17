@@ -93,8 +93,17 @@ class EditPage extends Component {
     }
 
     render() {
-        console.log(this.state)
+        let adminEdit = () => {
+            if (this.props.store.user.access_id === 1) {
+                return true
+            } else {
+                return false
+            }
+        }
+
         return (
+            <div>
+            {adminEdit() ? 
             <form onSubmit={this.handleSubmit}>
                 <Input className="inputs" placeholder="Name" value={this.state.name} onChange={(event) => { this.handleInput(event, 'name') }} />
                 <br />
@@ -139,6 +148,8 @@ class EditPage extends Component {
                     <DeleteSweepIcon color="primary" onClick={this.handleDelete} />
                 </IconButton>
             </form>
+            : <h1>You are not authorized to view this page.</h1>}
+            </div>
         )
     }
 }

@@ -88,10 +88,13 @@ class DetailCard extends Component {
        let adminEdit = () => {
             if (this.props.store.user.access_id === 1) {
                 return true
+            } else {
+                return false
             }
         }
+
         return (
-            <Card className="pageBody" className="detailCard">
+            <Card className="pageBody detailCard">
                 <CardContent>
                     <img className="logo" src={this.props.store.detailReducer.image_url} alt={this.props.store.detailReducer.name + ' logo'} />
                     <Typography className="businessName">
@@ -118,7 +121,7 @@ class DetailCard extends Component {
                         <Box component="fieldset" mb={3} borderColor="transparent">
                             <StyledRating onChange={this.handleRate} name="customized-color" value={this.props.store.ratingReducer.user_rating} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
                         </Box>
-                        {adminEdit && <Button variant="contained" color="primary" onClick={this.goToEdit}>Edit</Button>}
+                        {adminEdit() && <Button variant="contained" color="primary" onClick={this.goToEdit}>Edit</Button>}
                     </CardActions>
                 </CardContent>
                 <Table>
