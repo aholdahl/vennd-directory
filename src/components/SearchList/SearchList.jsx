@@ -8,25 +8,44 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ReportProblemIcon from '@material-ui/icons/ReportProblem';
 
 class SearchList extends Component {
+    componentDidMount(){
+        // this.fetchDemographics();
+        this.fetchFavorite();
+    }
+
+    // //saves the list of available demographics via demographicSaga to the demographicReducer
+    // fetchDemographics = () => {
+    //     this.props.dispatch({
+    //         type: 'FETCH_DEMOGRAPHICS'
+    //     })
+    // }
+
+    // //saves the list of available favorites via favoriteSaga to the favoriteReducer
+    fetchFavorite = () => {
+        this.props.dispatch({
+            type: 'FETCH_FAVORITE',
+        })
+    }
+
 
     //When a business is clicked, saves the business details via detailSaga in a reducer and takes the user to the Detail page where the info will be rendered
     handleSelect = () => {
-        this.props.dispatch({
-            type: 'FETCH_CURRENT',
-            payload: { id: this.props.business.id }
-        })
-        this.props.dispatch({
-            type: 'FETCH_VOTES',
-            payload: {
-                business_id: this.props.business.id
-            }
-        })
-        this.props.dispatch({
-            type: 'FETCH_STATS',
-            payload: {
-                business_id: this.props.business.id
-            }
-        })
+        // this.props.dispatch({
+        //     type: 'FETCH_CURRENT',
+        //     payload: { id: this.props.business.id }
+        // })
+        // this.props.dispatch({
+        //     type: 'FETCH_VOTES',
+        //     payload: {
+        //         business_id: this.props.business.id
+        //     }
+        // })
+        // this.props.dispatch({
+        //     type: 'FETCH_STATS',
+        //     payload: {
+        //         business_id: this.props.business.id
+        //     }
+        // })
         this.props.history.push(`/detail/${this.props.business.id}`)
     }
 

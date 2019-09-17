@@ -28,37 +28,37 @@ import './App.css';
 class App extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' })
-    this.fetchBusinesses();
+    // this.fetchBusinesses();
     this.fetchCategories();
-    this.fetchDemographics();
-    this.fetchFavorites();
+    // this.fetchDemographics();
+    this.fetchFavorite();
     // this.fetchRatings();
     // this.fetchVotes();
   }
 
-  //saves the list of available categories via categorySaga to the categoryReducer
+  // //saves the list of available categories via categorySaga to the categoryReducer
   fetchCategories = () => {
     this.props.dispatch({
       type: 'FETCH_CATEGORIES'
     })
   }
 
-  //saves the list of available businesses via businessSaga to the businessReducer
-  fetchBusinesses = () => {
-    this.props.dispatch({
-      type: 'FETCH_BUSINESSES'
-    })
-  }
+  // //saves the list of available businesses via businessSaga to the businessReducer
+  // fetchBusinesses = () => {
+  //   this.props.dispatch({
+  //     type: 'FETCH_BUSINESSES'
+  //   })
+  // }
 
-  //saves the list of available demographics via demographicSaga to the demographicReducer
-  fetchDemographics = () => {
-    this.props.dispatch({
-      type: 'FETCH_DEMOGRAPHICS'
-    })
-  }
+  // //saves the list of available demographics via demographicSaga to the demographicReducer
+  // fetchDemographics = () => {
+  //   this.props.dispatch({
+  //     type: 'FETCH_DEMOGRAPHICS'
+  //   })
+  // }
 
   //saves the list of available favorites via favoriteSaga to the favoriteReducer
-  fetchFavorites = () => {
+  fetchFavorite = () => {
     this.props.dispatch({
       type: 'FETCH_FAVORITE',
     })

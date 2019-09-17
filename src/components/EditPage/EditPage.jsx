@@ -14,18 +14,18 @@ class EditPage extends Component {
 
     //this may not be necessary during deployment, but was helpful during development because the dropdown would clear at every change.
     componentDidMount() {
-        this.getCategories();
+        // this.getCategories();
         this.setState({
             ...this.props.store.detailReducer
         })
     }
 
-    //saves the list of available categories to a reducer for use in the dropdown menu
-    getCategories = () => {
-        this.props.dispatch({
-            type: 'FETCH_CATEGORIES'
-        })
-    }
+    // //saves the list of available categories to a reducer for use in the dropdown menu
+    // getCategories = () => {
+    //     this.props.dispatch({
+    //         type: 'FETCH_CATEGORIES'
+    //     })
+    // }
 
     //saves the text input to the local state until submit
     handleInput = (event, property) => {

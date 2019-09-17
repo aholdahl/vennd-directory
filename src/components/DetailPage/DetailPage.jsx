@@ -29,11 +29,31 @@ class DetailCard extends Component {
 
     componentDidMount() {
         this.props.dispatch({
+            type: 'FETCH_CURRENT',
+            payload: { id: this.props.match.params.id }
+        })
+        // this.props.dispatch({
+        //     type: 'FETCH_VOTES',
+        //     payload: {
+        //         business_id: this.props.match.params.id
+        //     }
+        // })
+        // this.props.dispatch({
+        //     type: 'FETCH_STATS',
+        //     payload: {
+        //         business_id: this.props.match.params.id
+        //     }
+        // })
+        this.props.dispatch({
             type: 'FETCH_RATING',
             payload: {
                 business_id: this.props.match.params.id
             }
         })
+        this.props.dispatch({
+            type: 'FETCH_DEMOGRAPHICS'
+        })
+    
     }
 
     //sends a post or put request to the ratingSaga, depending on if a previous rating exists for that user/business relationship
