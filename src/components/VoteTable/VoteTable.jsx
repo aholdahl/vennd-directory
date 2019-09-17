@@ -6,21 +6,6 @@ import ArrowDownwardOutlinedIcon from '@material-ui/icons/ArrowDownwardOutlined'
 
 class VoteTable extends Component {
 
-    componentDidMount(){
-        this.props.dispatch({
-            type: 'FETCH_VOTES',
-            payload: {
-                business_id: this.props.store.detailReducer.id
-            }
-        })
-        this.props.dispatch({
-            type: 'FETCH_STATS',
-            payload: {
-                business_id: this.props.store.detailReducer.id
-            }
-        })
-    }
-
     // If there has not been a vote for this user-business-demographic combination, a POST request will be sent to the database
     handleNewVote = (direction, demoId) => {
         this.props.dispatch({
@@ -28,7 +13,7 @@ class VoteTable extends Component {
             payload: {
                 vote: direction,
                 demographic_id: demoId,
-                business_id: this.props.store.detailReducer.id,
+                business_id: this.props.store.detailReducer.id
             }
         })
     }

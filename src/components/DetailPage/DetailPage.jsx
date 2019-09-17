@@ -28,32 +28,56 @@ function getLabelText(value) {
 class DetailCard extends Component {
 
     componentDidMount() {
+        this.fetchCurrent();
+        this.fetchDemographics();
+        this.fetchRatings();    
+        this.fetchVotes();
+        this.fetchStats();
+    }
+
+    //fetches the current business details via the detailSaga and stores them in the detailReducer
+    fetchCurrent = ()=>{
         this.props.dispatch({
             type: 'FETCH_CURRENT',
             payload: { id: this.props.match.params.id }
         })
-        // this.props.dispatch({
-        //     type: 'FETCH_VOTES',
-        //     payload: {
-        //         business_id: this.props.match.params.id
-        //     }
-        // })
-        // this.props.dispatch({
-        //     type: 'FETCH_STATS',
-        //     payload: {
-        //         business_id: this.props.match.params.id
-        //     }
-        // })
+    }
+
+    //fetches the user's rating for the current business via the ratingSaga and stores them in the ratingReducer
+    fetchRatings = ()=>{
         this.props.dispatch({
             type: 'FETCH_RATING',
             payload: {
                 business_id: this.props.match.params.id
             }
         })
+    }
+
+    //fetches all available demographics via the demographicSaga and stores them in the demographicReducer
+    fetchDemographics = ()=>{
         this.props.dispatch({
             type: 'FETCH_DEMOGRAPHICS'
         })
-    
+    }
+
+    //fetches the user's voting history via the voteSaga and stores them in the voteReducer
+    fetchVotes = () => {
+        this.props.dispatch({
+            type: 'FETCH_VOTES',
+            payload: {
+                business_id: this.props.match.params.id
+            }
+        })
+    }
+
+    //fetches all user's voting history via the statSaga and stores them in the statReducer
+    fetchStats = () => {
+        this.props.dispatch({
+            type: 'FETCH_STATS',
+            payload: {
+                business_id: this.props.match.params.id
+            }
+        })
     }
 
     //sends a post or put request to the ratingSaga, depending on if a previous rating exists for that user/business relationship

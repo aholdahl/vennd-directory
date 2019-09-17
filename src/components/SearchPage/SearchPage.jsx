@@ -22,17 +22,7 @@ class SearchBar extends Component {
 
     componentDidMount() {
         this.fetchBusinesses();
-        // this.fetchCategories();
-        // this.fetchDemographics();
-        // this.fetchFavorite();
     }
-
-    //saves the list of available categories via categorySaga to the categoryReducer
-    // fetchCategories = () => {
-    //     this.props.dispatch({
-    //         type: 'FETCH_CATEGORIES'
-    //     })
-    // }
 
     //saves the list of available businesses via businessSaga to the businessReducer
     fetchBusinesses = () => {
@@ -40,20 +30,6 @@ class SearchBar extends Component {
             type: 'FETCH_BUSINESSES'
         })
     }
-
-    // //saves the list of available demographics via demographicSaga to the demographicReducer
-    // fetchDemographics = () => {
-    //     this.props.dispatch({
-    //         type: 'FETCH_DEMOGRAPHICS'
-    //     })
-    // }
-
-    // //saves the list of available favorites via favoriteSaga to the favoriteReducer
-    // fetchFavorite = () => {
-    //     this.props.dispatch({
-    //         type: 'FETCH_FAVORITE',
-    //     })
-    // }
 
     //retrieves the search results via searchSaga from the database based on the specified parameters
     handleSubmit = () => {

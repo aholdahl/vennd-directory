@@ -28,12 +28,8 @@ import './App.css';
 class App extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' })
-    // this.fetchBusinesses();
     this.fetchCategories();
-    // this.fetchDemographics();
     this.fetchFavorite();
-    // this.fetchRatings();
-    // this.fetchVotes();
   }
 
   // //saves the list of available categories via categorySaga to the categoryReducer
@@ -43,40 +39,12 @@ class App extends Component {
     })
   }
 
-  // //saves the list of available businesses via businessSaga to the businessReducer
-  // fetchBusinesses = () => {
-  //   this.props.dispatch({
-  //     type: 'FETCH_BUSINESSES'
-  //   })
-  // }
-
-  // //saves the list of available demographics via demographicSaga to the demographicReducer
-  // fetchDemographics = () => {
-  //   this.props.dispatch({
-  //     type: 'FETCH_DEMOGRAPHICS'
-  //   })
-  // }
-
   //saves the list of available favorites via favoriteSaga to the favoriteReducer
   fetchFavorite = () => {
     this.props.dispatch({
       type: 'FETCH_FAVORITE',
     })
   }
-
-  //saves the list of available ratings via ratingSaga to the ratingReducer
-  // fetchRatings = ()=>{
-  //   this.props.dispatch({
-  //     type: 'FETCH_RATINGS'
-  //   })
-  // }
-
-  //saves the list of available votes via voteSaga to the voteReducer
-  // fetchVotes = ()=>{
-  //   this.props.dispatch({
-  //     type: 'FETCH_VOTES'
-  //   })
-  // }
 
   render() {
     return (
