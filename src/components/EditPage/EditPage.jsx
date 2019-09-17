@@ -140,7 +140,7 @@ class EditPage extends Component {
                             <DeleteSweepIcon color="primary" onClick={this.handleDelete} />
                         </IconButton>
                     </form>
-                : <h1>You are not authorized to view this page.</h1>}
+                    : <h1>You are not authorized to view this page.</h1>}
             </div>
         )
     }
