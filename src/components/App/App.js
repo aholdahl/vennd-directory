@@ -21,6 +21,7 @@ import SearchPage from '../SearchPage/SearchPage';
 import DetailPage from '../DetailPage/DetailPage';
 import BusinessForm from '../BusinessForm/BusinessForm';
 import EditPage from '../EditPage/EditPage';
+import ManageUsers from '../ManageUsers/ManageUsers';
 
 import './App.css';
 
@@ -127,6 +128,11 @@ class App extends Component {
               exact
               path="/edit/:id"
               component={EditPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/admin"
+              component={ManageUsers}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

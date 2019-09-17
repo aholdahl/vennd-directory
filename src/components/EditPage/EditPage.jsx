@@ -84,10 +84,10 @@ class EditPage extends Component {
     }
 
     //When the Admin confirms deletion, the id to be deleted will be dispatched to the detailSaga
-    confirmDelete = ()=>{
+    confirmDelete = () => {
         this.props.dispatch({
             type: 'DELETE_BUSINESS',
-            payload: {id: this.props.store.detailReducer.id}
+            payload: { id: this.props.store.detailReducer.id }
         })
         this.props.history.push('/search')
     }
@@ -103,52 +103,52 @@ class EditPage extends Component {
 
         return (
             <div>
-            {adminEdit() ? 
-            <form onSubmit={this.handleSubmit}>
-                <Input className="inputs" placeholder="Name" value={this.state.name} onChange={(event) => { this.handleInput(event, 'name') }} />
-                <br />
-                <Input className="inputs" placeholder="Address" value={this.state.address} onChange={(event) => { this.handleInput(event, 'address') }} />
-                <br />
-                <Input className="inputs" placeholder="City" value={this.state.city} onChange={(event) => { this.handleInput(event, 'city') }} />
-                <br />
-                <Input className="inputs" placeholder="State" value={this.state.state_code} onChange={(event) => { this.handleInput(event, 'state_code') }} />
-                <br />
-                <Input className="inputs" placeholder="Zip" value={this.state.zip} onChange={(event) => { this.handleInput(event, 'zip') }} />
-                <br />
-                <Select className="inputs"
-                    value={this.state.category_id}
-                    onChange={this.handleDropdown}
-                    input={<OutlinedInput name="select category" />}
-                >
-                    <MenuItem value='0'>
-                        <em>Category</em>
-                    </MenuItem>
-                    {this.props.store.categoryReducer.map((type) => {
-                        return (
-                            <MenuItem key={type.id} value={type.id}>{type.description}</MenuItem>
-                        )
-                    })}
-                </Select>
-                <br />
-                <Input className="inputs" placeholder="Image URL" value={this.state.image_url} onChange={(event) => { this.handleInput(event, 'image_url') }} />
-                <br />
-                <Input className="inputs" placeholder="Business URL" value={this.state.business_url} onChange={(event) => { this.handleInput(event, 'business_url') }} />
-                <br />
-                <Input className="inputs" placeholder="Google Places URL" value={this.state.google_places_url} onChange={(event) => { this.handleInput(event, 'google_places_url') }} />
-                <br />
-                <IconButton>
-                    {this.state.verified ? <CheckCircleIcon color="primary" onClick={(event) => { this.toggleIcon(event, 'verified', true) }} /> : <CheckCircleOutlinedIcon color="secondary" onClick={(event)=>{this.toggleIcon(event, 'verified', false)}}/>}
-                </IconButton>
-                <IconButton>
-                    {this.state.warning ? <ReportProblemIcon color="primary" onClick={(event)=>{this.toggleIcon(event, 'warning', true)}} /> : <ReportProblemOutlinedIcon color="secondary" onClick={(event)=>{this.toggleIcon(event, 'warning', false)}}/>}
-                </IconButton>
-                <Button variant="contained" color="primary" type="submit">Save Changes</Button>
-                <br/>
-                <IconButton>
-                    <DeleteSweepIcon color="primary" onClick={this.handleDelete} />
-                </IconButton>
-            </form>
-            : <h1>You are not authorized to view this page.</h1>}
+                {adminEdit() ?
+                    <form onSubmit={this.handleSubmit}>
+                        <Input className="inputs" placeholder="Name" value={this.state.name} onChange={(event) => { this.handleInput(event, 'name') }} />
+                        <br />
+                        <Input className="inputs" placeholder="Address" value={this.state.address} onChange={(event) => { this.handleInput(event, 'address') }} />
+                        <br />
+                        <Input className="inputs" placeholder="City" value={this.state.city} onChange={(event) => { this.handleInput(event, 'city') }} />
+                        <br />
+                        <Input className="inputs" placeholder="State" value={this.state.state_code} onChange={(event) => { this.handleInput(event, 'state_code') }} />
+                        <br />
+                        <Input className="inputs" placeholder="Zip" value={this.state.zip} onChange={(event) => { this.handleInput(event, 'zip') }} />
+                        <br />
+                        <Select className="inputs"
+                            value={this.state.category_id}
+                            onChange={this.handleDropdown}
+                            input={<OutlinedInput name="select category" />}
+                        >
+                            <MenuItem value='0'>
+                                <em>Category</em>
+                            </MenuItem>
+                            {this.props.store.categoryReducer.map((type) => {
+                                return (
+                                    <MenuItem key={type.id} value={type.id}>{type.description}</MenuItem>
+                                )
+                            })}
+                        </Select>
+                        <br />
+                        <Input className="inputs" placeholder="Image URL" value={this.state.image_url} onChange={(event) => { this.handleInput(event, 'image_url') }} />
+                        <br />
+                        <Input className="inputs" placeholder="Business URL" value={this.state.business_url} onChange={(event) => { this.handleInput(event, 'business_url') }} />
+                        <br />
+                        <Input className="inputs" placeholder="Google Places URL" value={this.state.google_places_url} onChange={(event) => { this.handleInput(event, 'google_places_url') }} />
+                        <br />
+                        <IconButton>
+                            {this.state.verified ? <CheckCircleIcon color="primary" onClick={(event) => { this.toggleIcon(event, 'verified', true) }} /> : <CheckCircleOutlinedIcon color="secondary" onClick={(event) => { this.toggleIcon(event, 'verified', false) }} />}
+                        </IconButton>
+                        <IconButton>
+                            {this.state.warning ? <ReportProblemIcon color="primary" onClick={(event) => { this.toggleIcon(event, 'warning', true) }} /> : <ReportProblemOutlinedIcon color="secondary" onClick={(event) => { this.toggleIcon(event, 'warning', false) }} />}
+                        </IconButton>
+                        <Button variant="contained" color="primary" type="submit">Save Changes</Button>
+                        <br />
+                        <IconButton>
+                            <DeleteSweepIcon color="primary" onClick={this.handleDelete} />
+                        </IconButton>
+                    </form>
+                : <h1>You are not authorized to view this page.</h1>}
             </div>
         )
     }

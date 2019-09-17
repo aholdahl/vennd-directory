@@ -29,6 +29,15 @@ const Nav = (props) => (
           <LogOutButton className="nav-link" />
         </>
       )}
+      {props.user.access_id === 1 && (
+        <>
+        <Link className="nav-link" to="/admin">
+          Admin
+        </Link>
+        </>
+      )
+
+      }
       {/* Always show this link since the about page is not protected */}
       <Link className="nav-link" to="/info">
         Info Page
