@@ -158,13 +158,22 @@ class DetailCard extends Component {
                     </Typography>
                     <Link href={this.props.store.detailReducer.google_places_url}>Open in Google Maps</Link>
                     <br/>
-                    {this.props.store.detailReducer.verified && <CheckCircleIcon />}
-                    {this.props.store.detailReducer.warning && <ReportProblemIcon />}
-                    <CardActions>
-                        {isFavorite.length > 0 ? <StarIcon onClick={this.removeFavorite} color="primary" /> : <StarBorderIcon onClick={this.addFavorite} color="secondary" />}
+                    <Typography>
+                        {this.props.store.detailReducer.verified && <CheckCircleIcon />}
+                        {this.props.store.detailReducer.warning && <ReportProblemIcon />}
+                        Average User Rating: 
                         <Box component="fieldset" mb={3} borderColor="transparent">
-                            <StyledRating onChange={this.handleRate} name="customized-color" value={this.props.store.ratingReducer.user_rating} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
+                            <StyledRating name="pristine" disabled="true" value={this.props.store.detailReducer.avg_rating} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
                         </Box>
+                    </Typography>
+                    <CardActions>
+                        <Typography>
+                            {isFavorite.length > 0 ? <StarIcon onClick={this.removeFavorite} color="primary" /> : <StarBorderIcon onClick={this.addFavorite} color="secondary" />}
+                            My Rating:
+                            <Box component="fieldset" mb={3} borderColor="transparent">
+                                <StyledRating onChange={this.handleRate} name="customized-color" value={this.props.store.ratingReducer.user_rating} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
+                            </Box>
+                        </Typography>
                         {adminEdit() && <Button variant="contained" color="primary" onClick={this.goToEdit}>Edit</Button>}
                     </CardActions>
                 </CardContent>

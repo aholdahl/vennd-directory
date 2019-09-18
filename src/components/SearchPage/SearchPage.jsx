@@ -96,8 +96,7 @@ class SearchBar extends Component {
     }
 
     render() {
-        console.log(this.state)
-
+        
         // maps over the search results and renders them to the DOM using the SearchList component
         let renderSearch = this.props.store.searchReducer.map((business) => {
             return (
@@ -108,7 +107,7 @@ class SearchBar extends Component {
         return (
             <div className="pageBody">
                 <SearchIcon color="primary" />
-                <OutlinedInput className="inputs" onChange={this.handleInput} />
+                <OutlinedInput className="inputs" onChange={this.handleInput} value={this.state.searchInput}/>
 
                 <Select
                     value={this.state.selectedCategoryId}
