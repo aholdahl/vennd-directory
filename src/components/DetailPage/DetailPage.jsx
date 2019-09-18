@@ -157,18 +157,19 @@ class DetailCard extends Component {
                         <Link href={this.props.store.detailReducer.business_url}>Go to Website</Link>
                     </Typography>
                     <Link href={this.props.store.detailReducer.google_places_url}>Open in Google Maps</Link>
-                    <br/>
                     <Typography>
-                        {this.props.store.detailReducer.verified && <CheckCircleIcon />}
-                        {this.props.store.detailReducer.warning && <ReportProblemIcon />}
-                        Average User Rating: 
+                        Average User Rating:
                         <Box component="fieldset" mb={3} borderColor="transparent">
                             <StyledRating name="pristine" disabled="true" value={this.props.store.detailReducer.avg_rating} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
                         </Box>
                     </Typography>
+                    {this.props.store.detailReducer.verified && <CheckCircleIcon />}
+                    {this.props.store.detailReducer.warning && <ReportProblemIcon />}
+                    <br/>
+                    {isFavorite.length > 0 ? <StarIcon onClick={this.removeFavorite} color="primary" /> : <StarBorderIcon onClick={this.addFavorite} color="secondary" />}
+  
                     <CardActions>
                         <Typography>
-                            {isFavorite.length > 0 ? <StarIcon onClick={this.removeFavorite} color="primary" /> : <StarBorderIcon onClick={this.addFavorite} color="secondary" />}
                             My Rating:
                             <Box component="fieldset" mb={3} borderColor="transparent">
                                 <StyledRating onChange={this.handleRate} name="customized-color" value={this.props.store.ratingReducer.user_rating} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
