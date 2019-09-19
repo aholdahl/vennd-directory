@@ -33,10 +33,21 @@ class SearchBar extends Component {
 
     //retrieves the search results via searchSaga from the database based on the specified parameters
     handleSubmit = () => {
+        // this.props.dispatch({
+        //     type: 'FETCH_SEARCH_NAME',
+        //     payload: this.state
+        // })
         this.props.dispatch({
-            type: 'FETCH_SEARCH_NAME',
+            type: 'FETCH_SEARCH',
             payload: this.state
         })
+        // const response = await fetch('/api/search',
+        //     {
+        //         method: 'GET',
+        //         headers: { 'Content-Type': 'application/json' },
+        //         body: JSON.stringify(action.payload)
+        //     })
+        // console.log(await response.json())
     }
 
     //resets the page to show all businesses, resets the state to original values
@@ -68,26 +79,30 @@ class SearchBar extends Component {
             ...this.state,
             selectedCategoryId: Number(event.target.value)
         })
-        this.props.dispatch({
-            type: 'FETCH_SEARCH_CATEGORY',
-            payload: { selectedCategoryId: Number(event.target.value) }
-        })
+        // this.props.dispatch({
+        //     type: 'FETCH_SEARCH_CATEGORY',
+        //     payload: { selectedCategoryId: Number(event.target.value) }
+        // })
     }
 
     //saves the chip tags to the local state until submit
     toggleBadge = (property, demo_id, current) => {
-        if (current === false) {
-            this.setState({
-                ...this.state,
-                [property]: true,
-            })
-            this.props.dispatch({
-                type: 'FETCH_SEARCH_DEMOGRAPHIC',
-                payload: { demographic: demo_id }
-            })
-        } else if (current === true) {
-            this.handleClear();
-        }
+        this.setState({
+            ...this.state,
+            [property]: !current
+        })
+        // if (current === false) {
+        //     this.setState({
+        //         ...this.state,
+        //         [property]: true,
+        //     })
+        //     this.props.dispatch({
+        //         type: 'FETCH_SEARCH_DEMOGRAPHIC',
+        //         payload: { demographic: demo_id }
+        //     })
+        // } else if (current === true) {
+        //     this.handleClear();
+        // }
     }
 
     //when the Add New icon is clicked, takes user to the BusinessForm component

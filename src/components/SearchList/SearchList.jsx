@@ -58,9 +58,6 @@ class SearchList extends Component {
                         <Typography>
                             {this.props.business.address}{' '}{this.props.business.city}{', '}{this.props.business.state_code}{' '}{this.props.business.zip}
                         </Typography>
-                        <Box component="fieldset" mb={3} borderColor="transparent">
-                            <StyledRating name="pristine" disabled="true" value={this.props.business.avg_rating} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit"/>} />
-                        </Box>
                     </CardContent>
                     <CardActions>
                         {isFavorite.length > 0 ? <StarIcon /> : <StarBorderIcon />}
@@ -70,6 +67,9 @@ class SearchList extends Component {
                         <IconButton>
                             {this.props.business.warning && <ReportProblemIcon />}
                         </IconButton>
+                        <Box component="fieldset" mb={3} borderColor="transparent">
+                            <StyledRating name="pristine" disabled="true" value={this.props.business.avg_rating} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
+                        </Box>
                     </CardActions>
                 </Card>
             </Grid>

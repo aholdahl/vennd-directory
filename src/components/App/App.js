@@ -76,6 +76,11 @@ class App extends Component {
               path="/search"
               component={SearchPage}
             />
+            {/* <Route
+              exact
+              path="/search/:searchInput?/:selectedCategoryId?/:lgbtqiaap(true)?/:poc(true)?/:accessible(true)?"
+              component={SearchPage}
+            /> */}
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.

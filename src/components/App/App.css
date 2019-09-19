@@ -70,8 +70,8 @@ input {
 .businessCard {
     display: inline-block;
     /* width: 400px; */
-    width: extend;
-    height: 250px; 
+    /* width: fit-content; */
+    height: fit-content; 
     margin: 10px;
     padding: 5px;
 }
