@@ -30,13 +30,13 @@ class DetailCard extends Component {
     componentDidMount() {
         this.fetchCurrent();
         this.fetchDemographics();
-        this.fetchRatings();    
+        this.fetchRatings();
         this.fetchVotes();
         this.fetchStats();
     }
 
     //fetches the current business details via the detailSaga and stores them in the detailReducer
-    fetchCurrent = ()=>{
+    fetchCurrent = () => {
         this.props.dispatch({
             type: 'FETCH_CURRENT',
             payload: { id: this.props.match.params.id }
@@ -44,7 +44,7 @@ class DetailCard extends Component {
     }
 
     //fetches the user's rating for the current business via the ratingSaga and stores them in the ratingReducer
-    fetchRatings = ()=>{
+    fetchRatings = () => {
         this.props.dispatch({
             type: 'FETCH_RATING',
             payload: {
@@ -54,7 +54,7 @@ class DetailCard extends Component {
     }
 
     //fetches all available demographics via the demographicSaga and stores them in the demographicReducer
-    fetchDemographics = ()=>{
+    fetchDemographics = () => {
         this.props.dispatch({
             type: 'FETCH_DEMOGRAPHICS'
         })
@@ -122,14 +122,14 @@ class DetailCard extends Component {
     }
 
     //when the admin clicks the Edit button, navigates to Edit page
-    goToEdit = ()=>{
+    goToEdit = () => {
         this.props.history.push(`/edit/${this.props.match.params.id}`)
     }
 
     render() {
         let isFavorite = (this.props.store.favoriteReducer.array_agg.filter((business_id) => { return business_id === this.props.store.detailReducer.id }))
 
-       let adminEdit = () => {
+        let adminEdit = () => {
             if (this.props.store.user.access_id === 1) {
                 return true
             } else {
@@ -165,9 +165,9 @@ class DetailCard extends Component {
                     </Typography>
                     {this.props.store.detailReducer.verified && <CheckCircleIcon />}
                     {this.props.store.detailReducer.warning && <ReportProblemIcon />}
-                    <br/>
+                    <br />
                     {isFavorite.length > 0 ? <StarIcon onClick={this.removeFavorite} color="primary" /> : <StarBorderIcon onClick={this.addFavorite} color="secondary" />}
-  
+
                     <CardActions>
                         <Typography>
                             My Rating:

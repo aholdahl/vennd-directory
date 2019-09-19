@@ -31,8 +31,8 @@ const Nav = (props) => (
       )}
       {props.user.access_id === 1 && (
         <>
-        <Link className="nav-link" to="/admin">
-          Admin
+          <Link className="nav-link" to="/admin">
+            Admin
         </Link>
         </>
       )

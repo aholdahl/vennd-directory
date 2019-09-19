@@ -42,16 +42,16 @@ router.put('/', (req, res) => {
 })
 
 //deletes the current business from the table
-router.delete('/:id', (req, res)=>{
+router.delete('/:id', (req, res) => {
     console.log(req.params.id)
     let queryText = `DELETE FROM "business" WHERE "id" = $1;`
     pool.query(queryText, [req.params.id])
-    .then((result)=>{
-        res.sendStatus(200)
-    }).catch((error)=>{
-        console.log(error)
-        res.sendStatus(500)
-    })
+        .then((result) => {
+            res.sendStatus(200)
+        }).catch((error) => {
+            console.log(error)
+            res.sendStatus(500)
+        })
 })
 
 module.exports = router;

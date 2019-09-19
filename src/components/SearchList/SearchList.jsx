@@ -25,7 +25,7 @@ const StyledRating = withStyles({
 })(Rating);
 
 class SearchList extends Component {
-    componentDidMount(){
+    componentDidMount() {
         this.fetchFavorite();
     }
 

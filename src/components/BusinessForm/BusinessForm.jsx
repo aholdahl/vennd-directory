@@ -55,7 +55,7 @@ class BusinessForm extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <Input className="inputs" placeholder="Name" value={this.state.name} onChange={(event) => { this.handleInput(event, 'name') }} />
-                <br/>
+                <br />
                 <Input className="inputs" placeholder="Address" value={this.state.address} onChange={(event) => { this.handleInput(event, 'address') }} />
                 <br />
                 <Input className="inputs" placeholder="City" value={this.state.city} onChange={(event) => { this.handleInput(event, 'city') }} />

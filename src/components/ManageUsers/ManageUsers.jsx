@@ -37,6 +37,7 @@ class ManageUsers extends Component {
         })
     }
 
+    //When the button is clicked, the user's access will switch from user to admin or the other way around
     toggleAdmin = (id, access) => {
         this.props.dispatch({
             type: 'UPDATE_USER',

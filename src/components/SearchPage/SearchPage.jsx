@@ -22,6 +22,7 @@ class SearchBar extends Component {
 
     componentDidMount() {
         this.fetchBusinesses();
+        this.fetchFavorite();
     }
 
     //saves the list of available businesses via businessSaga to the businessReducer
@@ -31,23 +32,19 @@ class SearchBar extends Component {
         })
     }
 
+    //saves the list of available favorites via favoriteSaga to the favoriteReducer
+    fetchFavorite = () => {
+        this.props.dispatch({
+            type: 'FETCH_FAVORITE',
+        })
+    }
+
     //retrieves the search results via searchSaga from the database based on the specified parameters
     handleSubmit = () => {
-        // this.props.dispatch({
-        //     type: 'FETCH_SEARCH_NAME',
-        //     payload: this.state
-        // })
         this.props.dispatch({
             type: 'FETCH_SEARCH',
             payload: this.state
         })
-        // const response = await fetch('/api/search',
-        //     {
-        //         method: 'GET',
-        //         headers: { 'Content-Type': 'application/json' },
-        //         body: JSON.stringify(action.payload)
-        //     })
-        // console.log(await response.json())
     }
 
     //resets the page to show all businesses, resets the state to original values
@@ -79,10 +76,6 @@ class SearchBar extends Component {
             ...this.state,
             selectedCategoryId: Number(event.target.value)
         })
-        // this.props.dispatch({
-        //     type: 'FETCH_SEARCH_CATEGORY',
-        //     payload: { selectedCategoryId: Number(event.target.value) }
-        // })
     }
 
     //saves the chip tags to the local state until submit
@@ -91,18 +84,6 @@ class SearchBar extends Component {
             ...this.state,
             [property]: !current
         })
-        // if (current === false) {
-        //     this.setState({
-        //         ...this.state,
-        //         [property]: true,
-        //     })
-        //     this.props.dispatch({
-        //         type: 'FETCH_SEARCH_DEMOGRAPHIC',
-        //         payload: { demographic: demo_id }
-        //     })
-        // } else if (current === true) {
-        //     this.handleClear();
-        // }
     }
 
     //when the Add New icon is clicked, takes user to the BusinessForm component
@@ -111,7 +92,7 @@ class SearchBar extends Component {
     }
 
     render() {
-        
+
         // maps over the search results and renders them to the DOM using the SearchList component
         let renderSearch = this.props.store.searchReducer.map((business) => {
             return (
@@ -122,7 +103,7 @@ class SearchBar extends Component {
         return (
             <div className="pageBody">
                 <SearchIcon color="primary" />
-                <OutlinedInput className="inputs" onChange={this.handleInput} value={this.state.searchInput}/>
+                <OutlinedInput className="inputs" onChange={this.handleInput} value={this.state.searchInput} />
 
                 <Select
                     value={this.state.selectedCategoryId}
