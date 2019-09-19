@@ -40,37 +40,39 @@ class SearchList extends Component {
     handleSelect = () => {
         this.props.history.push(`/detail/${this.props.business.id}`)
     }
-// 
+    // 
     render() {
         //maps over favoriteReducer to allow conditional rendering of star icon
-        let isFavorite = (this.props.store.favoriteReducer.array_agg.filter((business_id) => { return business_id === this.props.business.id }))
+        let favoriteFilter = (this.props.store.favoriteReducer.array_agg.filter((business_id) => { return business_id === this.props.business.id }))
+        // let isFavorite = ()=>{
+        //     if(favoriteFilter.length>0){
+        //         return true
+        //     } else {
+        //         return false
+        //     }
+        // }
 
         return (
-            <Grid item xs={4} className="pageBody">
+            <Grid item xs={12} s={6} className="pageBody">
                 <Card className="businessCard">
                     <CardContent onClick={this.handleSelect}>
-                        <CardActionArea>
+                        <CardActionArea title={`Click here to view more information about ${this.props.business.name}`}>
                             <img className="thumbnail" alt={this.props.business.name + ' logo'} src={this.props.business.image_url} />
-                            <Typography className="businessName">
+                            <Typography title="business name">
                                 {this.props.business.name}
                             </Typography>
                         </CardActionArea>
-                        <Typography>
+                        <Typography title="business address">
                             {this.props.business.address}{' '}{this.props.business.city}{', '}{this.props.business.state_code}{' '}{this.props.business.zip}
                         </Typography>
-                    </CardContent>
-                    <CardActions>
-                        {isFavorite.length > 0 ? <StarIcon /> : <StarBorderIcon />}
-                        <IconButton>
-                            {this.props.business.verified && <CheckCircleIcon />}
-                        </IconButton>
-                        <IconButton>
-                            {this.props.business.warning && <ReportProblemIcon />}
-                        </IconButton>
+                        {favoriteFilter.length>0 ? <StarIcon title="Favorite status: active"/> : <StarBorderIcon title="Favorite status: inactive"/>}
+                        {this.props.business.verified && <CheckCircleIcon title="This business has been verified by an administrator."/>}
+                        {this.props.business.warning && <ReportProblemIcon title="This business has been flagged for moderation."/>}
                         <Box component="fieldset" mb={3} borderColor="transparent">
-                            <StyledRating name="pristine" disabled={true} value={Number(this.props.business.avg_rating)} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
+                            <Typography>Avg Rating: </Typography>
+                            <StyledRating title={`The average user rating for ${this.props.business.name} is ${this.props.business.avg_rating}`} name="pristine" disabled={true} value={Number(this.props.business.avg_rating)} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
                         </Box>
-                    </CardActions>
+                    </CardContent>
                 </Card>
             </Grid>
         )

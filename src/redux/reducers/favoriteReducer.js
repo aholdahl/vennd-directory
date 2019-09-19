@@ -1,4 +1,4 @@
-const favoriteReducer = (state = [], action) => {
+const favoriteReducer = (state = {array_agg: []}, action) => {
     switch (action.type) {
         case 'SET_FAVORITE':
             return action.payload[0];

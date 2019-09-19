@@ -26,16 +26,19 @@ function* addBusiness(action) {
     }
 }
 
-//sends details of updated business from form to database (no GET route since page will change and automatically update)
+//sends details of updated business from form to database then triggers a GET request to update the businessReducer
 function* updateBusiness(action) {
     try {
         yield axios.put(`api/details`, action.payload)
+        yield put({
+            type: 'FETCH_BUSINESSES'
+        })
     } catch (error) {
         console.log(error)
     }
 }
 
-//sends details of deleted business from form to database (no GET route since page will change and automatically update)
+//sends details of deleted business from form to database then triggers a GET request to update the businessReducer
 function* deleteBusiness(action) {
     try {
         yield axios.delete(`api/details/${action.payload.id}`)

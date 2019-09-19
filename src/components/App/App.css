@@ -71,7 +71,7 @@ input {
     display: inline-block;
     /* width: 400px; */
     /* width: fit-content; */
-    height: fit-content; 
+    /* height: fit-content;  */
     margin: 10px;
     padding: 5px;
 }
