@@ -18,11 +18,12 @@ router.get('/', (req, res) => {
         value: (Number(req.query.selectedCategoryId))
     }
     // let demoArray = [(req.query.lgbtqiaap == 'true' && 1), (req.query.poc == 'true' && 2), (req.query.accessible == 'true' && 3)]
+    // let demoFilter = (demoArray.filter((id) => {
+    //     return id != false
+    // }))
     // let demoQuery = {
-    //     text: ` "votes"."demographic_id" = $1 AND "votes"."vote" ILIKE 'up'`,
-    //     value: demoArray.filter((id)=>{
-    //         return id != false
-    //     })
+    //     text: ` "votes"."demographic_id" IN ($3) AND "votes"."vote" ILIKE 'up'`,
+    //     value: (demoFilter !== [] && demoFilter.toString())
     // }
     let queerQuery = {
         text: ` "votes"."demographic_id" = 1 AND "votes"."vote" ILIKE 'up'`,
@@ -37,7 +38,7 @@ router.get('/', (req, res) => {
         value: (req.query.accessible == 'true')
     }
     let queryPieces = [inputQuery, categoryQuery, queerQuery, pocQuery, accessQuery];
-    // let queryPieces = [inputQuery, categoryQuery, demoQuery];
+    // let queryPieces = [inputQuery, demoQuery, categoryQuery];
     let queryText = () => {
         let myQuery = ``
         for (query of queryPieces) {
@@ -53,12 +54,21 @@ router.get('/', (req, res) => {
     let queryParams = () => {
         let params = (Number(req.query.selectedCategoryId) ?
             [(inputQuery.value || '%%'), Number(req.query.selectedCategoryId)]
-            : [inputQuery.value || '%%']);
-        // if(demoQuery.value !== []){
-        //     params.push(demoQuery.value)
-        // }
+            : [(inputQuery.value || '%%')]
+        );
         return params
     }
+    // let queryParams = () => {
+    //     let params = (Number(req.query.selectedCategoryId) ?
+    //         [(inputQuery.value || '%%'), Number(req.query.selectedCategoryId)]
+    //         : [(inputQuery.value || '%%')]
+    //     );
+    //     if (demoQuery.value) {
+    //         params.push(demoQuery.value)
+    //     }
+    //     return params
+    // }
+    console.log(fullQuery, queryParams())
     pool.query(fullQuery, queryParams())
         .then((result) => {
             res.send(result.rows)

@@ -32,7 +32,7 @@ class SearchBar extends Component {
         })
     }
 
-    //saves the list of available favorites via favoriteSaga to the favoriteReducer
+    // //saves the list of available favorites via favoriteSaga to the favoriteReducer
     fetchFavorite = () => {
         this.props.dispatch({
             type: 'FETCH_FAVORITE',

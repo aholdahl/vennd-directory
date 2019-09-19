@@ -25,24 +25,24 @@ const StyledRating = withStyles({
 })(Rating);
 
 class SearchList extends Component {
-    componentDidMount() {
-        this.fetchFavorite();
-    }
-
-    // //saves the list of available favorites via favoriteSaga to the favoriteReducer
-    fetchFavorite = () => {
-        this.props.dispatch({
-            type: 'FETCH_FAVORITE',
-        })
-    }
+    // componentDidMount() {
+    //     this.fetchFavorite();
+    // }
+    //
+    // // //saves the list of available favorites via favoriteSaga to the favoriteReducer
+    // fetchFavorite = () => {
+    //     this.props.dispatch({
+    //         type: 'FETCH_FAVORITE',
+    //     })
+    // }
 
     //When a business is clicked, user is taken to the Detail page
     handleSelect = () => {
         this.props.history.push(`/detail/${this.props.business.id}`)
     }
-
+// 
     render() {
-
+        //maps over favoriteReducer to allow conditional rendering of star icon
         let isFavorite = (this.props.store.favoriteReducer.array_agg.filter((business_id) => { return business_id === this.props.business.id }))
 
         return (
@@ -68,7 +68,7 @@ class SearchList extends Component {
                             {this.props.business.warning && <ReportProblemIcon />}
                         </IconButton>
                         <Box component="fieldset" mb={3} borderColor="transparent">
-                            <StyledRating name="pristine" disabled="true" value={this.props.business.avg_rating} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
+                            <StyledRating name="pristine" disabled={true} value={Number(this.props.business.avg_rating)} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
                         </Box>
                     </CardActions>
                 </Card>

@@ -14,4 +14,4 @@ router.get('/:id', (req, res) => {
         })
 })
 
-module.exports = router;Z
+module.exports = router;

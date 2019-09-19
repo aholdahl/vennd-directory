@@ -160,7 +160,7 @@ class DetailCard extends Component {
                     <Typography>
                         Average User Rating:
                         <Box component="fieldset" mb={3} borderColor="transparent">
-                            <StyledRating name="pristine" disabled="true" value={this.props.store.detailReducer.avg_rating} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
+                            <StyledRating name="pristine" disabled={true} value={Number(this.props.store.detailReducer.avg_rating)} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
                         </Box>
                     </Typography>
                     {this.props.store.detailReducer.verified && <CheckCircleIcon />}

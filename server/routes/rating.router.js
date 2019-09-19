@@ -4,7 +4,6 @@ const router = express.Router();
 
 //pulls rating for the active user and business ID
 router.get('/:id', (req, res) => {
-    console.log(req.params.id)
     let queryText = `SELECT * FROM "ratings" WHERE "user_id" = $1 AND "business_id" = $2;`
     pool.query(queryText, [req.user.id, req.params.id])
         .then((result) => {
