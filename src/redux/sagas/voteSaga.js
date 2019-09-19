@@ -22,6 +22,10 @@ function* addVote(action) {
             type: 'FETCH_VOTES',
             payload: action.payload
         })
+        yield put({
+            type: 'FETCH_STATS',
+            payload: action.payload
+        })
     } catch (error) {
         console.log(error)
     }
@@ -33,6 +37,10 @@ function* updateVote(action) {
         yield axios.put(`/api/votes`, action.payload)
         yield put({
             type: 'FETCH_VOTES',
+            payload: action.payload
+        })
+        yield put({
+            type: 'FETCH_STATS',
             payload: action.payload
         })
     } catch (error) {
