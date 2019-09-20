@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Input, Select, OutlinedInput, MenuItem, Button } from '@material-ui/core';
+import { Input, Select, OutlinedInput, MenuItem, Button, Typography } from '@material-ui/core';
 
 class BusinessForm extends Component {
     state = {
@@ -69,7 +69,8 @@ class BusinessForm extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <Input title="Enter business name." className="inputs" placeholder="Name" value={this.state.name} onChange={(event) => { this.handleInput(event, 'name') }} />
+                <Typography>Fields marked with an asterisk are required.</Typography>
+                <Input title="Required: Enter business name." className="inputs" placeholder="*Name" required={true} value={this.state.name} onChange={(event) => { this.handleInput(event, 'name') }} />
                 <br />
                 <Input title="Enter business address." className="inputs" placeholder="Address" value={this.state.address} onChange={(event) => { this.handleInput(event, 'address') }} />
                 <br />
@@ -79,13 +80,13 @@ class BusinessForm extends Component {
                 <br />
                 <Input title="Enter business zip code." className="inputs" placeholder="Zip" value={this.state.zip} onChange={(event) => { this.handleInput(event, 'zip') }} />
                 <br />
-                <Select title="Select business category." className="inputs"
+                <Select title="Required: Select business category." className="inputs" required={true}
                     value={this.state.selectedCategoryId}
                     onChange={this.handleDropdown}
                     input={<OutlinedInput name="select category" />}
                 >
                     <MenuItem value='0'>
-                        <em>Category</em>
+                        <em>*Category</em>
                     </MenuItem>
                     {this.props.store.categoryReducer.map((type) => {
                         return (
