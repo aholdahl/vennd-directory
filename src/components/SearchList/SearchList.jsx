@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Card, CardContent, CardActionArea, Typography, Grid, Container } from '@material-ui/core';
+import { Card, CardContent, CardActionArea, Typography, Grid } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
@@ -66,6 +66,9 @@ class SearchList extends Component {
                             {this.props.business.address}
                         <br/>
                             {this.props.business.city}{', '}{this.props.business.state_code}{' '}{this.props.business.zip}
+                        </Typography>
+                        <Typography title="category" className="businessCategory">
+                            {this.props.business.description}
                         </Typography>
                         {favoriteFilter.length>0 ? <StarIcon title="Favorite status: active"/> : <StarBorderIcon title="Favorite status: inactive"/>}
                         {this.props.business.verified && <CheckCircleIcon title="This business has been verified by an administrator."/>}

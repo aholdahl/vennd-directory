@@ -53,16 +53,16 @@ class BusinessForm extends Component {
             type: 'ADD_BUSINESS',
             payload: this.state
         })
-        this.setState({
-            name: '',
-            address: '',
-            city: '',
-            state_code: '',
-            zip: '',
-            image_url: '',
-            google_places_url: '',
-            selectedCategoryId: 0
-        })
+            this.setState({
+                name: '',
+                address: '',
+                city: '',
+                state_code: '',
+                zip: '',
+                image_url: '',
+                google_places_url: '',
+                selectedCategoryId: 0
+            })
         swal("Business has been added!")//should conditionally render based on success status
         this.props.history.push('/search')
     }
@@ -70,7 +70,9 @@ class BusinessForm extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <Typography>Fields marked with an asterisk are required.</Typography>
+                <Typography variant="h4" align="center" onClick={this.handlePresent}>Add New Business Form</Typography>
+                <Typography variant="subtitle2">Fields marked with an asterisk are required.</Typography>
+                <br/>
                 <Input title="Required: Enter business name." className="inputs" placeholder="*Name" required={true} value={this.state.name} onChange={(event) => { this.handleInput(event, 'name') }} />
                 <br />
                 <Input title="Enter business address." className="inputs" placeholder="Address" value={this.state.address} onChange={(event) => { this.handleInput(event, 'address') }} />
@@ -95,7 +97,6 @@ class BusinessForm extends Component {
                         )
                     })}
                 </Select>
-                <Button onClick={this.handlePresent}>.</Button>
                 <br />
                 <Input title="Enter URL for business logo." className="inputs" placeholder="Image URL" value={this.state.image_url} onChange={(event) => { this.handleInput(event, 'image_url') }} />
                 <br />

@@ -24,6 +24,10 @@ function* addRating(action) {
             type: 'FETCH_RATING',
             payload: { business_id: action.payload.business_id }
         })
+        yield put({
+            type: 'FETCH_CURRENT',
+            payload: { id: action.payload.business_id }
+        })
     } catch (error) {
         console.log(error)
     }
@@ -36,6 +40,10 @@ function* updateRating(action) {
         yield put({
             type: 'FETCH_RATING',
             payload: { business_id: action.payload.business_id }
+        })
+        yield put({
+            type: 'FETCH_CURRENT',
+            payload: { id: action.payload.business_id }
         })
     } catch (error) {
         console.log(error)

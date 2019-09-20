@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Input, Select, OutlinedInput, MenuItem, Button, IconButton } from '@material-ui/core';
+import { Input, Select, OutlinedInput, MenuItem, Button, IconButton, Typography } from '@material-ui/core';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CheckCircleOutlinedIcon from '@material-ui/icons/CheckCircleOutlined';
 import ReportProblemIcon from '@material-ui/icons/ReportProblem';
@@ -97,6 +97,9 @@ class EditPage extends Component {
             <div>
                 {adminEdit() ?
                     <form onSubmit={this.handleSubmit}>
+                        <Typography variant="h4" align="center">Edit Business Form</Typography>
+                        <Typography variant="subtitle2">Fields marked with an asterisk are required.</Typography>
+                        <br/>
                         <Input title="Required: Enter business name." required={true} className="inputs" placeholder="*Name" value={this.state.name} onChange={(event) => { this.handleInput(event, 'name') }} />
                         <br />
                         <Input title="Enter business address." className="inputs" placeholder="Address" value={this.state.address} onChange={(event) => { this.handleInput(event, 'address') }} />

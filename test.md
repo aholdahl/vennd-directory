@@ -1,54 +1,59 @@
     User can register
 
-    User can log in
+ Y   User can log in
     User cannot login with incorrect username
     User cannot login with incorrect password
 
-    User can search by keyword
-    User can search by keyword and category
-    User can search by keyword and one demographic
-    User can search by keyword and multiple demographics
-    User can search by category
-    User can search by category and one demographic
-    User can search by category and multiple demographics
-    User can search by one demographic
-    User can search by multiple demographics
-    User can clear search results to display all businesses
-    -How are the categories sorted?
-    -How are the results sorted? Is it consistent with each request type?
-    -Do the search result tiles show all relevant data?
-    -Are the search results responsive to page size?
-    -Color contrast is reasonable?
+*New users cannot load the page because favorites array_agg is null
 
-    User can click the Add Business button to access the Business Form
+Y    User can search by keyword
+Y    User can search by keyword and category
+Y    User can search by keyword and one demographic
+N    User can search by keyword and multiple demographics
+Y    User can search by category
+Y    User can search by category and one demographic
+N    User can search by category and multiple demographics
+Y    User can search by one demographic
+N    User can search by multiple demographics
+Y    User can clear search results to display all businesses
+Y    -How are the categories sorted?
+        -Alphabetically
+Y    -How are the results sorted? Is it consistent with each request type?
+        -Alphabetically
+Y    -Do the search result tiles show all relevant data?
+Y    -Are the search results responsive to page size?
+N    -Color contrast is reasonable?
+
+Y    User can click the Add Business button to access the Business Form
     -Guest cannot access the Business Form
-    User can add text to all fields, then add a business successfully.
-    -User receives notification of successful add?
-    User can add business with only Name and Category
-    User cannot add a business that already exists
-    User cannot add a business without a Name
-    User cannot add a business without a Category
-    -User receives an error notification as applicable?
-    -Changes reflect on Search page immediately?
+Y    User can add text to all fields, then add a business successfully.
+Y    -User receives notification of successful add?
+Y    User can add business with only Name and Category
+Y    User cannot add a business that already exists
+Y    User cannot add a business without a Name
+Y    User cannot add a business without a Category
+N    -User receives an error notification as applicable?
+Y    -Changes reflect on Search page immediately?
 
-    User can click on a search result to open the details page.
-    User can upvote each demographic
-    User can downvote each demographic
-    User can undo vote
-    User can only have one vote per demographic per business
-    -Voting statistics update immediately?
+Y    User can click on a search result to open the details page.
+Y    User can upvote each demographic
+Y    User can downvote each demographic
+Y    User can undo vote
+Y    User can only have one vote per demographic per business
+Y    -Voting statistics update immediately?
     -Guest cannot vote
-    User can add business to favorites
-    User can remove business to favorites
+Y    User can add business to favorites
+Y    User can remove business to favorites
     -Guest cannot change favorites
-    User can add new rating to business
-    User can change rating for business
-    -Avg rating updates immediately?
+Y    User can add new rating to business
+Y    User can change rating for business
+Y    -Avg rating updates immediately?
     -Guest cannot change rating
-    -Do the details show all relevant data?
-    -Are the page contents organized in a logical way?
-    -Color contrast is reasonable?
+Y    -Do the details show all relevant data?
+Y    -Are the page contents organized in a logical way?
+N    -Color contrast is reasonable?
     -User cannot see the Edit button
+    -Guest cannot see the Edit button
 
     Admin can click on the Edit button to open the Edit page
     -User cannot see the Edit page

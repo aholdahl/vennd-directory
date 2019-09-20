@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import VoteTable from '../VoteTable/VoteTable.jsx';
-import { Card, CardContent, Typography, CardActions, Link, Table, TableBody, TableCell, TableHead, TableRow, Button } from '@material-ui/core';
+import { Paper, Grid, Typography, Link, Table, TableBody, TableCell, TableHead, TableRow, Button, IconButton } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import ReportProblemIcon from '@material-ui/icons/ReportProblem';
 import { withStyles } from '@material-ui/core/styles';
-import { Box } from '@material-ui/core';
 import { Rating } from '@material-ui/lab';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 
@@ -150,59 +149,61 @@ class DetailCard extends Component {
         }
 
         return (
-            <Card className="pageBody detailCard">
-                <CardContent>
-                    <img className="logo" src={this.props.store.detailReducer.image_url} alt={this.props.store.detailReducer.name + ' logo'} />
-                    <Typography title="business name">
-                        {this.props.store.detailReducer.name}
-                    </Typography>
-                    <Typography title="business address">
-                        {this.props.store.detailReducer.address}
-                    </Typography>
-                    <Typography>
-                        {this.props.store.detailReducer.city}{', '}{this.props.store.detailReducer.state_code}{' '}{this.props.store.detailReducer.zip}
-                    </Typography>
-                    <Typography title="category" className="businessCategory">
-                        {this.props.store.detailReducer.description}
-                    </Typography>
-                    <Typography>
-                        <Link title={`Click here to view the website for ${this.props.store.detailReducer.name}.`} href={this.props.store.detailReducer.business_url}>Go to Website</Link>
-                    </Typography>
-                    <Link title={`Click here to view ${this.props.store.detailReducer.name} in Google Maps.`} href={this.props.store.detailReducer.google_places_url}>Open in Google Maps</Link>
-                        <Box component="fieldset" mb={3} borderColor="transparent">
-                            <Typography>Average User Rating:</Typography>
-                            <StyledRating title={`The average user rating for ${this.props.store.detailReducer.name} is ${this.props.store.detailReducer.avg_rating}`} name="pristine" disabled={true} value={Number(this.props.store.detailReducer.avg_rating)} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
-                        </Box>
-                    {this.props.store.detailReducer.verified && <CheckCircleIcon title="This business has been verified by an administrator." />}
-                    {this.props.store.detailReducer.warning && <ReportProblemIcon title="This business has been flagged for moderation."/>}
-                    <br />
-                    {favoriteFilter > 0 ? <StarIcon title="Favorite status: active" onClick={this.removeFavorite} color="primary" /> : <StarBorderIcon title="Favorite status: inactive" onClick={this.addFavorite} color="secondary" />}
-                    <CardActions>
-                        
-                        <Box component="fieldset" mb={3} borderColor="transparent">
-                            <Typography>My Rating:</Typography>
-                            <StyledRating title={`You have given ${this.props.store.detailReducer.name} a rating of ${this.props.store.detailReducer.avg_rating} hearts out of five.`} onChange={this.handleRate} name="customized-color" value={this.props.store.ratingReducer.user_rating} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
-                        </Box>
+            <Paper className="pageBody">
+                <Grid container spacing={0} alignItems={'center'} justify={'space-around'} className="detailCard" >
+                    <Grid item s={12} m={3}>
+                        <img className="logo" src={this.props.store.detailReducer.image_url} alt={this.props.store.detailReducer.name + ' logo'} />
+                    </Grid>
+                    <Grid item s={12} m={6}>
+                        <Typography title="business name">
+                            {this.props.store.detailReducer.name}
+                        </Typography>
+                        <Typography title="business address">
+                            {this.props.store.detailReducer.address}
+                        </Typography>
+                        <Typography>
+                            {this.props.store.detailReducer.city}{', '}{this.props.store.detailReducer.state_code}{' '}{this.props.store.detailReducer.zip}
+                        </Typography>
+                        <Typography title="category" className="businessCategory">
+                            {this.props.store.detailReducer.description}
+                        </Typography>
+                        <Typography>
+                            <Link title={`Click here to view the website for ${this.props.store.detailReducer.name}.`} href={this.props.store.detailReducer.business_url}>Go to Website</Link>
+                        </Typography>
+                        <Link title={`Click here to view ${this.props.store.detailReducer.name} in Google Maps.`} href={this.props.store.detailReducer.google_places_url}>Open in Google Maps</Link>
+                        <br />
                         {adminEdit() && <Button title="Hello admin! Click here to edit this business." variant="contained" color="primary" onClick={this.goToEdit}>Edit</Button>}
-                    </CardActions>
-                </CardContent>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Demographic</TableCell>
-                            <TableCell>Voting Buttons</TableCell>
-                            <TableCell>Statistics</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {this.props.store.demographicReducer.map((demo) => {
-                            return (
-                                <VoteTable demographic={demo} key={demo.id} />
-                            )
-                        })}
-                    </TableBody>
-                </Table>
-            </Card>
+                    </Grid>
+                    <Grid item s={12} m={3}>
+                        <Typography>Average User Rating:</Typography>
+                        <StyledRating title={`The average user rating for ${this.props.store.detailReducer.name} is ${this.props.store.detailReducer.avg_rating}`} name="pristine" disabled={true} value={Number(this.props.store.detailReducer.avg_rating)} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
+                        {this.props.store.detailReducer.verified && <CheckCircleIcon title="This business has been verified by an administrator." />}
+                        {this.props.store.detailReducer.warning && <ReportProblemIcon title="This business has been flagged for moderation." />}
+                        <Typography>My Rating:</Typography>
+                        <StyledRating title={`You have given ${this.props.store.detailReducer.name} a rating of ${this.props.store.ratingReducer.user_rating} hearts out of five.`} onChange={this.handleRate} name="customized-color" value={this.props.store.ratingReducer.user_rating} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
+                        <br />
+                        {favoriteFilter > 0 ? <IconButton onClick={this.removeFavorite}><StarIcon title="Favorite status: active" color="primary" /></IconButton> : <IconButton onClick={this.addFavorite}><StarBorderIcon title="Favorite status: inactive" color="secondary" /></IconButton>}
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Demographic</TableCell>
+                                    <TableCell>Voting Buttons</TableCell>
+                                    <TableCell>Statistics</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {this.props.store.demographicReducer.map((demo) => {
+                                    return (
+                                        <VoteTable demographic={demo} key={demo.id} />
+                                    )
+                                })}
+                            </TableBody>
+                        </Table>
+                    </Grid>
+                </Grid>
+            </Paper>
         )
     }
 }

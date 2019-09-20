@@ -78,10 +78,15 @@ input {
 
 .detailCard {
     margin: 10px;
+    padding: 10px;
     display: flex;
     justify-content: center;
 }
 
 .businessCategory {
     font-style: italic;
+}
+
+.ratingBox {
+    margin-bottom: 0px !important;
 }
