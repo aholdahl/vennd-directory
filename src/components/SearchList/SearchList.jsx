@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Card, CardContent, CardActionArea, Typography, CardActions, IconButton, Grid } from '@material-ui/core';
+import { Card, CardContent, CardActionArea, Typography, Grid, Container } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
@@ -53,17 +53,19 @@ class SearchList extends Component {
         // }
 
         return (
-            <Grid item xs={4} className="pageBody">
+            <Grid item s={6} m={4} className="pageBody">
                 <Card className="businessCard">
                     <CardContent onClick={this.handleSelect}>
                         <CardActionArea title={`Click here to view more information about ${this.props.business.name}`}>
                             <img className="thumbnail" alt={this.props.business.name + ' logo'} src={this.props.business.image_url} />
+                        </CardActionArea>
                             <Typography title="business name">
                                 {this.props.business.name}
                             </Typography>
-                        </CardActionArea>
                         <Typography title="business address">
-                            {this.props.business.address}{' '}{this.props.business.city}{', '}{this.props.business.state_code}{' '}{this.props.business.zip}
+                            {this.props.business.address}
+                        <br/>
+                            {this.props.business.city}{', '}{this.props.business.state_code}{' '}{this.props.business.zip}
                         </Typography>
                         {favoriteFilter.length>0 ? <StarIcon title="Favorite status: active"/> : <StarBorderIcon title="Favorite status: inactive"/>}
                         {this.props.business.verified && <CheckCircleIcon title="This business has been verified by an administrator."/>}

@@ -58,22 +58,22 @@ input {
     cursor: pointer;
 }
 
-.thumbnail {
- width: 100px;
- border: 1px solid grey;
-}
-
 .logo {
  width: 200px;
 }
 
 .businessCard {
     display: inline-block;
-    /* width: 400px; */
-    /* width: fit-content; */
-    /* height: fit-content;  */
+    width: 300px;
+    height: fit-content; 
     margin: 10px;
-    padding: 5px;
+    /* padding : 5px; */
+}
+
+.thumbnail {
+ max-height: 100px;
+ max-width: 100px;
+ border: 1px solid grey;
 }
 
 .detailCard {

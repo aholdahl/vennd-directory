@@ -52,7 +52,7 @@ class EditPage extends Component {
         })
         this.setState({
         })
-        // alert('Check the console to confirm completion!')//should conditionally render based on success status
+        swal("Business has been updated!")//should conditionally render based on success status
         this.props.history.push('/search')
     }
 
@@ -97,23 +97,23 @@ class EditPage extends Component {
             <div>
                 {adminEdit() ?
                     <form onSubmit={this.handleSubmit}>
-                        <Input className="inputs" placeholder="Name" value={this.state.name} onChange={(event) => { this.handleInput(event, 'name') }} />
+                        <Input title="Required: Enter business name." required={true} className="inputs" placeholder="*Name" value={this.state.name} onChange={(event) => { this.handleInput(event, 'name') }} />
                         <br />
-                        <Input className="inputs" placeholder="Address" value={this.state.address} onChange={(event) => { this.handleInput(event, 'address') }} />
+                        <Input title="Enter business address." className="inputs" placeholder="Address" value={this.state.address} onChange={(event) => { this.handleInput(event, 'address') }} />
                         <br />
-                        <Input className="inputs" placeholder="City" value={this.state.city} onChange={(event) => { this.handleInput(event, 'city') }} />
+                        <Input title="Enter business city." className="inputs" placeholder="City" value={this.state.city} onChange={(event) => { this.handleInput(event, 'city') }} />
                         <br />
-                        <Input className="inputs" placeholder="State" value={this.state.state_code} onChange={(event) => { this.handleInput(event, 'state_code') }} />
+                        <Input title="Enter business state code." className="inputs" placeholder="State" value={this.state.state_code} onChange={(event) => { this.handleInput(event, 'state_code') }} />
                         <br />
-                        <Input className="inputs" placeholder="Zip" value={this.state.zip} onChange={(event) => { this.handleInput(event, 'zip') }} />
+                        <Input title="Enter business zip code." className="inputs" placeholder="Zip Code" value={this.state.zip} onChange={(event) => { this.handleInput(event, 'zip') }} />
                         <br />
-                        <Select className="inputs"
+                        <Select title="Required: Select business category." required={true} className="inputs"
                             value={this.state.category_id}
                             onChange={this.handleDropdown}
                             input={<OutlinedInput name="select category" />}
                         >
-                            <MenuItem value='0'>
-                                <em>Category</em>
+                            <MenuItem value={0}>
+                                <em>*Category</em>
                             </MenuItem>
                             {this.props.store.categoryReducer.map((type) => {
                                 return (
@@ -122,22 +122,22 @@ class EditPage extends Component {
                             })}
                         </Select>
                         <br />
-                        <Input className="inputs" placeholder="Image URL" value={this.state.image_url} onChange={(event) => { this.handleInput(event, 'image_url') }} />
+                        <Input title="Enter URL for business logo." className="inputs" placeholder="Image URL" value={this.state.image_url} onChange={(event) => { this.handleInput(event, 'image_url') }} />
                         <br />
-                        <Input className="inputs" placeholder="Business URL" value={this.state.business_url} onChange={(event) => { this.handleInput(event, 'business_url') }} />
+                        <Input title="Enter URL for business website." className="inputs" placeholder="Business URL" value={this.state.business_url} onChange={(event) => { this.handleInput(event, 'business_url') }} />
                         <br />
-                        <Input className="inputs" placeholder="Google Places URL" value={this.state.google_places_url} onChange={(event) => { this.handleInput(event, 'google_places_url') }} />
+                        <Input title="Enter URL for Google Maps `Share` link." className="inputs" placeholder="Google Places URL" value={this.state.google_places_url} onChange={(event) => { this.handleInput(event, 'google_places_url') }} />
                         <br />
                         <IconButton>
-                            {this.state.verified ? <CheckCircleIcon color="primary" onClick={(event) => { this.toggleIcon(event, 'verified', true) }} /> : <CheckCircleOutlinedIcon color="secondary" onClick={(event) => { this.toggleIcon(event, 'verified', false) }} />}
+                            {this.state.verified ? <CheckCircleIcon title="Verified. Click to remove verification." color="primary" onClick={(event) => { this.toggleIcon(event, 'verified', true) }} /> : <CheckCircleOutlinedIcon title="Not Verified. Click to mark as verified." color="secondary" onClick={(event) => { this.toggleIcon(event, 'verified', false) }} />}
                         </IconButton>
                         <IconButton>
-                            {this.state.warning ? <ReportProblemIcon color="primary" onClick={(event) => { this.toggleIcon(event, 'warning', true) }} /> : <ReportProblemOutlinedIcon color="secondary" onClick={(event) => { this.toggleIcon(event, 'warning', false) }} />}
+                            {this.state.warning ? <ReportProblemIcon title="Warning enabled. Click to disable." color="primary" onClick={(event) => { this.toggleIcon(event, 'warning', true) }} /> : <ReportProblemOutlinedIcon title="Warning disabled. Click to enable." color="secondary" onClick={(event) => { this.toggleIcon(event, 'warning', false) }} />}
                         </IconButton>
-                        <Button variant="contained" color="primary" type="submit">Save Changes</Button>
+                        <Button title="Click to save changes." variant="contained" color="primary" type="submit">Save Changes</Button>
                         <br />
                         <IconButton>
-                            <DeleteSweepIcon color="primary" onClick={this.handleDelete} />
+                            <DeleteSweepIcon title="Click to delete this business." color="primary" onClick={this.handleDelete} />
                         </IconButton>
                     </form>
                     : <h1>You are not authorized to view this page.</h1>}

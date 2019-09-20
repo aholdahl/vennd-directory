@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Input, Select, OutlinedInput, MenuItem, Button, Typography } from '@material-ui/core';
+import swal from 'sweetalert';
 
 class BusinessForm extends Component {
     state = {
@@ -62,7 +63,7 @@ class BusinessForm extends Component {
             google_places_url: '',
             selectedCategoryId: 0
         })
-        // alert('Check the console to confirm completion!')//should conditionally render based on success status
+        swal("Business has been added!")//should conditionally render based on success status
         this.props.history.push('/search')
     }
 
@@ -76,16 +77,16 @@ class BusinessForm extends Component {
                 <br />
                 <Input title="Enter business city." className="inputs" placeholder="City" value={this.state.city} onChange={(event) => { this.handleInput(event, 'city') }} />
                 <br />
-                <Input title="Enter business state." className="inputs" placeholder="State" value={this.state.state_code} onChange={(event) => { this.handleInput(event, 'state_code') }} />
+                <Input title="Enter business state code." className="inputs" placeholder="State" value={this.state.state_code} onChange={(event) => { this.handleInput(event, 'state_code') }} />
                 <br />
-                <Input title="Enter business zip code." className="inputs" placeholder="Zip" value={this.state.zip} onChange={(event) => { this.handleInput(event, 'zip') }} />
+                <Input title="Enter business zip code." className="inputs" placeholder="Zip code" value={this.state.zip} onChange={(event) => { this.handleInput(event, 'zip') }} />
                 <br />
                 <Select title="Required: Select business category." className="inputs" required={true}
                     value={this.state.selectedCategoryId}
                     onChange={this.handleDropdown}
                     input={<OutlinedInput name="select category" />}
                 >
-                    <MenuItem value='0'>
+                    <MenuItem value={0}>
                         <em>*Category</em>
                     </MenuItem>
                     {this.props.store.categoryReducer.map((type) => {
