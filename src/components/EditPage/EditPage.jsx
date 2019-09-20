@@ -52,7 +52,7 @@ class EditPage extends Component {
         })
         this.setState({
         })
-        alert('Check the console to confirm completion!')//should conditionally render based on success status
+        // alert('Check the console to confirm completion!')//should conditionally render based on success status
         this.props.history.push('/search')
     }
 

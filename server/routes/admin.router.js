@@ -4,7 +4,7 @@ const router = express.Router();
 
 //gets list of all users from the database
 router.get('/', (req, res) => {
-    const queryText = 'SELECT "user"."id", "user"."username", "user"."access_id", "access_type"."clearance" FROM "user" JOIN "access_type" ON "user"."access_id" = "access_type"."id";'
+    const queryText = 'SELECT "user"."id", "user"."username", "user"."access_id", "access_type"."clearance" FROM "user" JOIN "access_type" ON "user"."access_id" = "access_type"."id" ORDER BY "username" ASC;'
     pool.query(queryText)
         .then((result) => {
             res.send(result.rows)

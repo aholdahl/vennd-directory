@@ -53,7 +53,7 @@ class SearchList extends Component {
         // }
 
         return (
-            <Grid item xs={12} s={6} className="pageBody">
+            <Grid item xs={4} className="pageBody">
                 <Card className="businessCard">
                     <CardContent onClick={this.handleSelect}>
                         <CardActionArea title={`Click here to view more information about ${this.props.business.name}`}>
