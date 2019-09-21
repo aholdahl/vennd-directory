@@ -10,12 +10,26 @@ import DeleteSweepIcon from '@material-ui/icons/DeleteSweep';
 import swal from 'sweetalert';
 
 class EditPage extends Component {
-    state = {}
+
+    state = {
+        name: '',
+        address: '',
+        city: '',
+        state_code: '',
+        zip: '',
+        category_id: 0,
+        image_url: '',
+        business_url: '',
+        google_places_url: '',
+    }
 
     //this may not be necessary during deployment, but was helpful during development because the dropdown would clear at every change.
     componentDidMount() {
         this.setState({
             ...this.props.store.detailReducer
+        })
+        this.props.dispatch({
+            type: 'CLEAR_FORM_ERROR'
         })
     }
 
@@ -46,14 +60,25 @@ class EditPage extends Component {
     //When the Add button is clicked, all form info is sent to the database, the state is cleared, and the user is taken back to the Search page
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.dispatch({
-            type: 'UPDATE_BUSINESS',
-            payload: this.state
-        })
-        this.setState({
-        })
-        swal("Business has been updated!")//should conditionally render based on success status
-        this.props.history.push('/search')
+        if (this.state.category_id !== 0) {
+            this.props.dispatch({
+                type: 'UPDATE_BUSINESS',
+                payload: this.state
+            })
+            this.setState({
+                name: '',
+                address: '',
+                city: '',
+                state_code: '',
+                zip: '',
+                category_id: 0,
+                image_url: '',
+                business_url: '',
+                google_places_url: '',
+            })
+        } else {
+            swal("You must select a category.")
+        }
     }
 
     //When clicked, a confirmation modal will appear. The admin will have the opportunity to confirm or cancel.
@@ -98,6 +123,12 @@ class EditPage extends Component {
             <div>
                 {adminEdit() ?
                     <form onSubmit={this.handleSubmit}>
+                        {this.props.store.errors.formError &&
+                            <Typography variant="h4"
+                                className="alert"
+                            >
+                                {this.props.store.errors.formError}
+                            </Typography>}
                         <Typography variant="h4" align="center">Edit Business Form</Typography>
                         <Typography variant="subtitle2">Fields marked with an asterisk are required.</Typography>
                         <br />

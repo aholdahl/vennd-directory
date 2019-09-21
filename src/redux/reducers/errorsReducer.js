@@ -32,10 +32,25 @@ const registrationMessage = (state = '', action) => {
   }
 };
 
+//If BusinessForm or EditPage return an error to the detailSaga, it will be reflected here. Error will clear upon successful submit.
+const formError = (state = '', action) => {
+  switch (action.type) {
+    case 'SET_FORM_ERROR':
+      return 'Oops! Something went wrong.';
+    case 'SET_FORM_SUCCESS':
+      return 'Success!'
+    case 'CLEAR_FORM_ERROR':
+      return '';
+    default:
+      return state;
+  }
+}
+
 // make one object that has keys loginMessage, registrationMessage
 // these will be on the redux state at:
 // state.errors.loginMessage and state.errors.registrationMessage
 export default combineReducers({
   loginMessage,
   registrationMessage,
+  formError,
 });
