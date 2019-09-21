@@ -1,18 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Container, Typography } from '@material-ui/core';
 import LogOutButton from '../LogOutButton/LogOutButton';
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
 // and then instead of `props.user.username` you could use `user.username`
 const UserPage = (props) => (
-  <div>
-    <h1 id="welcome">
+  <Container className="pageBody">
+    <Typography variant="h4" id="welcome" className="detailCard">
       Welcome, {props.user.username}!
-    </h1>
-    <p>Your ID is: {props.user.id}</p>
+    </Typography>
+    <Typography>Your ID is: {props.user.id}</Typography>
     <LogOutButton className="log-in" />
-  </div>
+  </Container>
 );
 
 // Instead of taking everything from state, we just want the user info.

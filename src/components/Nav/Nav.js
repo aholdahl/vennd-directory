@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
-// import venndLogo from '../../../src/vennd-logo.jpg';
 import venndLogo from '../../../src/vennd-logo-softpalette.png';
-// import venndLogo from '../../../src/vennd-logo-dim.png';
 
 const Nav = (props) => (
   <div className="nav">

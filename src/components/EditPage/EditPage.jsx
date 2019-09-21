@@ -85,6 +85,7 @@ class EditPage extends Component {
     }
 
     render() {
+        //confirms whether user has admin access or not. If user is not an admin, they will receive an error page instead.
         let adminEdit = () => {
             if (this.props.store.user.access_id === 1) {
                 return true
@@ -99,7 +100,7 @@ class EditPage extends Component {
                     <form onSubmit={this.handleSubmit}>
                         <Typography variant="h4" align="center">Edit Business Form</Typography>
                         <Typography variant="subtitle2">Fields marked with an asterisk are required.</Typography>
-                        <br/>
+                        <br />
                         <Input title="Required: Enter business name." required={true} className="inputs" placeholder="*Name" value={this.state.name} onChange={(event) => { this.handleInput(event, 'name') }} />
                         <br />
                         <Input title="Enter business address." className="inputs" placeholder="Address" value={this.state.address} onChange={(event) => { this.handleInput(event, 'address') }} />
