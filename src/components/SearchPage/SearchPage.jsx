@@ -114,7 +114,7 @@ class SearchBar extends Component {
             <Container className="pageBody">
                 <Container onKeyUp={this.handleKeyUp}>
                     <SearchIcon color="primary" />
-                    <OutlinedInput className="inputs" onChange={this.handleInput} value={this.state.searchInput} placeholder="Search by keyword" title="Type here to search by business name" />
+                    <OutlinedInput className="inputs" onChange={this.handleInput} value={this.state.searchInput} placeholder="Search by Name" title="Type here to search by business name" />
 
                     <Select
                         value={this.state.selectedCategoryId}

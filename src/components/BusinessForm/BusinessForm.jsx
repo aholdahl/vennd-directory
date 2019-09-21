@@ -4,6 +4,7 @@ import { Input, Select, OutlinedInput, MenuItem, Button, Typography } from '@mat
 import swal from 'sweetalert';
 
 class BusinessForm extends Component {
+
     state = {
         name: '',
         address: '',
@@ -16,7 +17,13 @@ class BusinessForm extends Component {
         selectedCategoryId: 0
     }
 
-    handlePresent = ()=>{
+    componentDidMount() {
+        this.props.dispatch({
+            type: 'CLEAR_FORM_ERROR'
+        })
+    }
+
+    handlePresent = () => {
         this.setState({
             name: 'Hard Times Cafe',
             address: '1821 Riverside Ave',
@@ -49,10 +56,11 @@ class BusinessForm extends Component {
     //When the Add button is clicked, all form info is sent to the database, the state is cleared, and the user is taken back to the Search page
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.dispatch({
-            type: 'ADD_BUSINESS',
-            payload: this.state
-        })
+        if (this.state.selectedCategoryId !== 0) {
+            this.props.dispatch({
+                type: 'ADD_BUSINESS',
+                payload: this.state
+            })
             this.setState({
                 name: '',
                 address: '',
@@ -60,19 +68,27 @@ class BusinessForm extends Component {
                 state_code: '',
                 zip: '',
                 image_url: '',
+                business_url: '',
                 google_places_url: '',
                 selectedCategoryId: 0
             })
-        swal("Business has been added!")//should conditionally render based on success status
-        this.props.history.push('/search')
+        } else {
+            swal("You must select a category.")
+        }
     }
 
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
+                {this.props.store.errors.formError &&
+                    <Typography variant="h4"
+                        className="alert"
+                    >
+                        {this.props.store.errors.formError}
+                    </Typography>}
                 <Typography variant="h4" align="center" onClick={this.handlePresent}>Add New Business Form</Typography>
                 <Typography variant="subtitle2">Fields marked with an asterisk are required.</Typography>
-                <br/>
+                <br />
                 <Input title="Required: Enter business name." className="inputs" placeholder="*Name" required={true} value={this.state.name} onChange={(event) => { this.handleInput(event, 'name') }} />
                 <br />
                 <Input title="Enter business address." className="inputs" placeholder="Address" value={this.state.address} onChange={(event) => { this.handleInput(event, 'address') }} />

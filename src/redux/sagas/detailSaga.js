@@ -21,8 +21,12 @@ function* addBusiness(action) {
         yield put({
             type: 'FETCH_BUSINESSES'
         })
+        yield put({
+            type: 'SET_FORM_SUCCESS'
+        })
     } catch (error) {
         console.log(error)
+        yield put({ type: 'SET_FORM_ERROR' });
     }
 }
 
@@ -33,8 +37,12 @@ function* updateBusiness(action) {
         yield put({
             type: 'FETCH_BUSINESSES'
         })
+        yield put({
+            type: 'SET_FORM_SUCCESS'
+        })
     } catch (error) {
         console.log(error)
+        yield put({ type: 'SET_FORM_ERROR' });
     }
 }
 
