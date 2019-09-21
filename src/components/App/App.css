@@ -1,7 +1,10 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
-    background-color: rgb(177, 179, 116);
+    /* background-color: rgb(177, 179, 116); */
+        background-color: rgba(164, 182, 98, 0.822);
+
+    /* background-color: cadetblue; */
 }
 
 .pageBody {

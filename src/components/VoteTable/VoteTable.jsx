@@ -49,19 +49,19 @@ class VoteTable extends Component {
                         return (
                             <TableCell>
                                 <ArrowUpwardOutlinedIcon title="Click here to undo upvote." color="primary" onClick={() => { this.handleVote('', this.props.demographic.id) }} />
-                                <ArrowDownwardOutlinedIcon title="Click here to downvote." onClick={() => { this.handleVote('down', this.props.demographic.id) }} />
+                                <ArrowDownwardOutlinedIcon title="Click here to downvote." color="disabled" onClick={() => { this.handleVote('down', this.props.demographic.id) }} />
                             </TableCell>)
                     } else if (vote.vote === 'down') {
                         return (
                             <TableCell>
-                                < ArrowUpwardOutlinedIcon title="Click here to upvote." onClick={() => { this.handleVote('up', this.props.demographic.id) }} />
-                                < ArrowDownwardOutlinedIcon title="Click here to undo downvote." color="error" onClick={() => { this.handleVote('', this.props.demographic.id) }} />
+                                < ArrowUpwardOutlinedIcon title="Click here to upvote." color="disabled" onClick={() => { this.handleVote('up', this.props.demographic.id) }} />
+                                < ArrowDownwardOutlinedIcon title="Click here to undo downvote." color="secondary" onClick={() => { this.handleVote('', this.props.demographic.id) }} />
                             </TableCell>)
                     } else if (vote.vote === '') {
                         return (
                             <TableCell>
-                                < ArrowUpwardOutlinedIcon title="Click here to upvote." onClick={() => { this.handleVote('up', this.props.demographic.id) }} />
-                                < ArrowDownwardOutlinedIcon title="Click here to downvote." onClick={() => { this.handleVote('down', this.props.demographic.id) }} />
+                                < ArrowUpwardOutlinedIcon title="Click here to upvote." color="disabled" onClick={() => { this.handleVote('up', this.props.demographic.id) }} />
+                                < ArrowDownwardOutlinedIcon title="Click here to downvote." color="disabled" onClick={() => { this.handleVote('down', this.props.demographic.id) }} />
                             </TableCell>)
                     }
                 } return null;
@@ -72,8 +72,8 @@ class VoteTable extends Component {
                 <TableCell>{this.props.demographic.specific}</TableCell>
                 {voteFilter[0] === undefined ?
                     <TableCell>
-                        < ArrowUpwardOutlinedIcon title="Click here to upvote." onClick={() => { this.handleNewVote('up', this.props.demographic.id) }} />
-                        < ArrowDownwardOutlinedIcon title="Click here to downvote." onClick={() => { this.handleNewVote('down', this.props.demographic.id) }} />
+                        < ArrowUpwardOutlinedIcon title="Click here to upvote." color="disabled" onClick={() => { this.handleNewVote('up', this.props.demographic.id) }} />
+                        < ArrowDownwardOutlinedIcon title="Click here to downvote." color="disabled" onClick={() => { this.handleNewVote('down', this.props.demographic.id) }} />
                     </TableCell>
                     : renderVoteIcons
                 }
