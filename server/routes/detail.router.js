@@ -2,8 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-//currently written to pull the clicked business and merge with category table to get the category name
-//could rewrite to loop through categoryReducer to find the match for rendering instead
+//gets the selected business details from the database
 router.get('/:id', (req, res) => {
     let queryText = `SELECT "business"."id","business"."name","business"."address","business"."city","business"."state_code","business"."zip","business"."image_url","business"."business_url","business"."google_places_url","business"."verified","business"."warning","business"."category_id","categories"."description", round(avg("ratings"."user_rating"), 0) AS "avg_rating" FROM "business" JOIN "categories" ON "business"."category_id" = "categories"."id" FULL OUTER JOIN "ratings" ON "business"."id" = "ratings"."business_id" WHERE "business"."id" = $1 GROUP BY "business"."id", "categories"."id";`
     pool.query(queryText, [req.params.id])

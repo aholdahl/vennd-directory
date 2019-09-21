@@ -2,7 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-//pulls all available categories
+//gets all available categories from the database
 router.get('/', (req, res) => {
     let queryText = `SELECT * FROM "categories" ORDER BY "description";`
     pool.query(queryText)

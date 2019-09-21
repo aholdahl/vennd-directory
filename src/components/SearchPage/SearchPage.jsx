@@ -46,8 +46,9 @@ class SearchBar extends Component {
         })
     }
 
-    handleKeyUp = (key)=>{
-        if (key.key === 'Enter'){
+    //Allows user to submit search parameters using the Enter key while focus is within the Search area
+    handleKeyUp = (key) => {
+        if (key.key === 'Enter') {
             this.handleSubmit();
         }
     }
@@ -129,24 +130,6 @@ class SearchBar extends Component {
                             )
                         })}
                     </Select>
-                    {/* <Select
-                        value={this.state.selectedDemoId}
-                        onChange={this.toggleBadge()}
-                        input={<OutlinedInput className="inputs" name="select category" />}
-                    >
-                        <MenuItem value={0}>
-                            <em>Search By Demographic</em>
-                        </MenuItem>
-                        <MenuItem value="lgbtqiaap">
-                            LGBTQIAAP
-                        </MenuItem>
-                        <MenuItem value="poc">
-                            POC
-                        </MenuItem>
-                        <MenuItem value="accessible">
-                            Accessible
-                        </MenuItem>
-                    </Select> */}
                     {this.state.lgbtqiaap ?
                         <Chip title="Filter by LGBT+ friendly: currently active" color="primary" label="LGBTQIAAP" onClick={() => { this.toggleBadge('lgbtqiaap', 1, true) }} />
                         : < Chip title="Filter by LGBT+ friendly: currently inactive" color="secondary" label="LGBTQIAAP" variant="outlined" onClick={() => { this.toggleBadge('lgbtqiaap', 1, false) }} />}
@@ -156,7 +139,7 @@ class SearchBar extends Component {
                     {this.state.accessible ?
                         <Chip title="Filter by disability friendly: currently active" color="primary" label="Accessible" onClick={() => { this.toggleBadge('accessible', 3, true) }} />
                         : < Chip title="Filter by disability friendly: currently inactive" color="secondary" label="Accessible" variant="outlined" onClick={() => { this.toggleBadge('accessible', 3, false) }} />}
-
+                    {/* Allows the user to filter by favorites */}
                     {/* <IconButton>
                         {this.state.favorite ? <StarIcon color="primary" onClick={() => { this.toggleBadge('favorite', true) }} />
                             : <StarBorderIcon color="secondary" onClick={() => { this.toggleBadge('favorite', false) }} />}

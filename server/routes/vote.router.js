@@ -2,7 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-//pulls all available demographics
+//gets all available votes from the database
 router.get('/:id', (req, res) => {
     let queryText = `SELECT * FROM "votes" WHERE "user_id" = $1 AND "business_id" = $2;`
     pool.query(queryText, [req.user.id, req.params.id])

@@ -2,7 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-//pulls all available demographics
+//gets all available demographics from the database
 router.get('/', (req, res) => {
     let queryText = `SELECT * FROM "demographics";`
     pool.query(queryText)

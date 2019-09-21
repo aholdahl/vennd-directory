@@ -49,6 +49,7 @@ class ManageUsers extends Component {
     }
 
     render() {
+        //confirms whether user has admin access or not. If user is not an admin, they will receive an error page instead.
         let adminEdit = () => {
             if (this.props.store.user.access_id === 1) {
                 return true

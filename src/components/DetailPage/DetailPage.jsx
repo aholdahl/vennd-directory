@@ -127,17 +127,7 @@ class DetailCard extends Component {
 
     render() {
         //maps over favoriteReducer to allow conditional rendering of star icon
-        let favoriteFilter = (this.props.store.favoriteReducer.array_agg.filter((business_id) => { return business_id === this.props.store.detailReducer.id }))
-        // let isFavorite = () => {
-        //     if(this.props.store.favoriteReducer === null){
-        //         return false
-        //     } else 
-        //     if ((this.props.store.favoriteReducer.array_agg.filter((business_id) => { return business_id === this.props.store.detailReducer.id })).length > 0) {
-        //         return true
-        //     } else {
-        //         return false
-        //     }
-        // }
+        let favoriteFilter = (this.props.store.favoriteReducer.filter((business) => { return business.business_id === this.props.store.detailReducer.id }))
 
         //if user is has admin access, Edit button will be visible
         let adminEdit = () => {
@@ -182,7 +172,7 @@ class DetailCard extends Component {
                         <Typography>My Rating:</Typography>
                         <StyledRating title={`You have given ${this.props.store.detailReducer.name} a rating of ${this.props.store.ratingReducer.user_rating} hearts out of five.`} onChange={this.handleRate} name="customized-color" value={this.props.store.ratingReducer.user_rating} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
                         <br />
-                        {favoriteFilter > 0 ? <IconButton onClick={this.removeFavorite}><StarIcon title="Favorite status: active" color="primary" /></IconButton> : <IconButton onClick={this.addFavorite}><StarBorderIcon title="Favorite status: inactive" color="secondary" /></IconButton>}
+                        {favoriteFilter.length > 0 ? <IconButton onClick={this.removeFavorite}><StarIcon title="Favorite status: active" color="primary" /></IconButton> : <IconButton onClick={this.addFavorite}><StarBorderIcon title="Favorite status: inactive" color="secondary" /></IconButton>}
                     </Grid>
                     <Grid item xs={12}>
                         <Table>
