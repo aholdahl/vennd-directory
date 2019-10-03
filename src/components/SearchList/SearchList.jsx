@@ -59,7 +59,7 @@ class SearchList extends Component {
                         <Box component="fieldset" mb={3} borderColor="transparent">
                             <Typography>Avg Rating: </Typography>
                             <StyledRating title={`The average user rating for ${this.props.business.name} is ${this.props.business.avg_rating}`} name="pristine" disabled={true} value={Number(this.props.business.avg_rating)} getLabelText={getLabelText} precision={1} icon={<FavoriteIcon fontSize="inherit" />} />
-                        </Box>
+                         </Box>
                     </CardContent>
                 </Card>
             </Grid>

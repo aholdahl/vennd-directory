@@ -36,7 +36,7 @@ class VoteTable extends Component {
         let statFilter = (this.props.store.statReducer.filter((stat_id) => { return stat_id.demographic_id === this.props.demographic.id }))
         let renderStats = statFilter.map((stat) => {
             if (stat.vote !== '') {
-                return <p>{stat.vote}: {stat.count}</p>
+                return <p key={stat.id}>{stat.vote}: {stat.count}</p>
             } else { return null }
         })
 

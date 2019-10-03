@@ -1,3 +1,6 @@
+### ABOUT THIS PROJECT
+Vennd is a business directory and crowd-sourced review forum specifically designed for people in minority demographics to find safe and affirming businesses in their area.
+
 ## Prerequisites
 Before you get started, make sure you have the following software installed on your computer:
 
@@ -39,3 +42,11 @@ Allyson Holdahl
 My instructors, Dane Smith and Kris Szafranski
 My cohort, particularly Andy DuBois, Dustin Fedie, David Heisel, Alex Smith, Brandon Wiedemeier, Chris O'Bannon, and Pache Vang
 My cousin, Val Holdahl
+
+# Further Development
+
+Search by location
+Search by multiple demographics
+Restrict users from voting on demographics to which they do not belong by requiring self-identification on profile page
+Create portal for admin to manage business categories
+Perform UX surveys to determine additional features and whether more demographic categories are needed.
