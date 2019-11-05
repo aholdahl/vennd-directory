@@ -12,6 +12,7 @@ const UserPage = (props) => (
       Welcome, {props.user.username}!
     </Typography>
     <Typography>Your ID is: {props.user.id}</Typography>
+    <Typography>This is the beta release of Vennd. We will be conducting user experience testing and collecting data to determine the scope of enhancements for version 2.0.</Typography>
     <LogOutButton className="log-in" />
   </Container>
 );
