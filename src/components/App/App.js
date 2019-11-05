@@ -30,7 +30,9 @@ class App extends Component {
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_USER' })
     this.fetchCategories();
-    this.fetchFavorite();
+    // if(this.props.user){
+      this.fetchFavorite();
+    // }
   }
 
   //saves the list of available categories via categorySaga to the categoryReducer
